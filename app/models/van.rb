@@ -1,4 +1,5 @@
 class Van < ApplicationRecord
+  has_many :bookings
   belongs_to :user
   validates :description, presence: true, length: { minimum: 20 }
   validates :location, presence: true
