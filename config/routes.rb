@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :vans, only[:index, :show, :new, :create, :edit, :destroy] do
+    resources :bookings, only[:new, :create]
+  end
+  resources :bookings, only[:destroy, :show, :index]
 
-  # Defines the root path route ("/")
-
+  get "dashboard", to: "pages#dashboard"
 end
