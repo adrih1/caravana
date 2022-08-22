@@ -9,8 +9,17 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to root_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to root_path, status: :see_other
   end
 end
 
