@@ -58,4 +58,3 @@ class VansController < ApplicationController
   end
 
 end
-
