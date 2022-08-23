@@ -12,7 +12,6 @@ Van.destroy_all
 User.destroy_all
 puts "DB cleaned"
 
-
 puts 'Creating 15 fake users...'
 15.times do
   user = User.new({
