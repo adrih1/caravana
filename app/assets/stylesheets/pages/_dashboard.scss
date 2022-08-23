@@ -54,7 +54,6 @@ html, body {
 body {
   font-family: 'DM Sans', sans-serif;
   overflow: hidden;
-  display: flex;
   justify-content: center;
   background-color: var(--app-container);
 }
@@ -882,14 +881,6 @@ button, a {
   }
 
   .project-boxes.jsListView .project-box-header > span {
-    font-size: 10px;
-  }
-
-  .box-progress-header {
-    font-size: 12px;
-  }
-
-  .box-progress-percentage {
     font-size: 10px;
   }
 
