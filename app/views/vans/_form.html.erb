@@ -1,0 +1,10 @@
+<%= simple_form_for(van) do |f| %>
+  <%= f.input :brand %>
+  <%= f.input :color %>
+  <%= f.input :description %>
+  <%= f.input :price_per_day%>
+  <%= f.input :mileage %>
+  <%= f.input :location %>
+  <%# <%= f.input :picture_url %>
+  <%= f.submit "create your van", class: "btn btn-primary" %>
+<% end %>
