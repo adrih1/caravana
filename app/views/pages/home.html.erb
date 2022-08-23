@@ -18,12 +18,10 @@
 </div>
 <% @vans = Van.all %>
 
-<div class="container">
-  <div class="mx-auto mt-5" style="width: 80%;">
-    <div class="row">
-      <div class="col justify-content-around row">
+  <div class="mx-auto mt-5" style="width: 90%;">
+      <div class="cards ">
         <% @vans.each do |van| %>
-          <div class="col-3 card-trip border rounded-4 px-0 m-2 d-flex flex-column justify-content-between">
+          <div class=" card-trip border rounded-4">
               <div class="d-flex align-items-center ">
                 <div id="carouselExampleIndicators" class=" card-trip-img carousel slide" data-bs-ride="true">
                   <div class="carousel-indicators">
@@ -78,8 +76,6 @@
         <% end %>
       </div>
     </div>
-  </div>
-</div>
 
 
 

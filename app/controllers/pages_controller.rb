@@ -24,6 +24,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+   # @bookings = Booking.find_by user_id: current_user.id
+   @bookings = current_user.bookings
+
   end
 
   def my_vans
