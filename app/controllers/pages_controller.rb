@@ -17,6 +17,9 @@ class PagesController < ApplicationController
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  skip_before_action :authenticate_user!, only: :home
+
+
   def home
   end
 

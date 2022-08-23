@@ -1,6 +1,6 @@
 class VansController < ApplicationController
   def index
-    @vans = Van.all
+    @vans = policy_scope(Van)
   end
 
   # GET /van/1
@@ -8,15 +8,19 @@ class VansController < ApplicationController
     @van = Van.find(params[:id])
     @booking = Booking.new
     #@review = Review.new
+    authorize @van
   end
 
   # GET /van/new
   def new
     @van = Van.new
+    authorize @van
   end
 
   # GET /van/1/edit
   def edit
+    @van = Van.find(params[:id])
+    authorize @van
   end
 
   # POST /van
@@ -29,9 +33,11 @@ class VansController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    authorize @van
   end
 
   def update
+    authorize @van
     if @van.update(van_params)
       redirect_to van_path(@van)
     else
@@ -40,6 +46,7 @@ class VansController < ApplicationController
   end
 
   def destroy
+    authozie @van
     @van.destroy
     redirect_to vans_path, status: :see_other
   end
@@ -51,3 +58,4 @@ class VansController < ApplicationController
   end
 
 end
+

@@ -28,13 +28,19 @@
 </div>
 
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80);">
-  <div class="container">
-    <h1>Caravana brings <strong>vans</strong> to <strong>you</strong>!</h1>
-    <p>Change your life, discover and travel with  the <strong>perfect</strong> van for you.</p>
+<div class="banner">
+  <div class="cover">
+    <h1>Discover what's a trip is.</h1>
+    <form  class="flex-form">
+      <label for="from">
+        <i class="ion-location"></i>
+      </label>
+      <input type="search" placeholder="Where do you want to go?">
+      <input type="submit" value="Search">
+    </form>
+
   </div>
 </div>
-
 <% @vans = Van.all %>
 
 <div class="container">
@@ -84,8 +90,13 @@
               </div>
               <div class="d-flex flex-row justify-content-between">
                 <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%=van.price_per_day%><i class="fa-solid fa-euro-sign"></i> day</span></p>
-                <p><%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%>  <%= link_to "Edit", edit_van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
-                <%= link_to "", @van, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"card-trip-user fa-solid fa-trash-can" %>
+                <p>
+                <%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%>
+                <% if policy(van).edit? %>
+                    <%= link_to "Edit", edit_van_path(van), style:"color:#00477A; text-decoration: none;"%>
+                <% end %>
+                </p>
+                <%= link_to "", @van, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"card-trip-user fa-solid fa-trash-can", method: :delete if policy(van).destroy? %>
               </div>
             </div>
           </div>
