@@ -43,11 +43,10 @@ class VansController < ApplicationController
     @van.destroy
     redirect_to vans_path, status: :see_other
   end
-  end
+end
 
   private
 
   def van_params
     params.require(:van).permit(:description, :color, :location, :price_per_day, :brand, :mileage)
   end
-end
