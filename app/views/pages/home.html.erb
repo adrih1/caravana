@@ -1,6 +1,95 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<div class="navbar">
+  <div class="navbar-logo">
+    <%=link_to vans_path do %>
+      <a class="navbar-brand">
+        <img src="https://www.mpadeco.com/thumb.php?zc=3&f=0&src=/sites/mpadeco/files/products/a7919613977f4838bc2ba176ef45c515.png&fl=none&w=500&h=500" />
+      </a>
+    <%end%>
+  </div>
+  <div class="navbar-right" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item active">
+        <%=link_to "Log In", new_user_session_path, class:"nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%=link_to "Sign Up",  new_user_registration_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%=link_to "Sign Out",  destroy_user_session_path, data: {turbo_method: :delete}, class:"nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80);">
   <div class="container">
-    <h1>Caravana bring <strong>vans</strong> to <strong>hippies people</strong>!</h1>
-    <p>Change your life and learn to travel with a beautiful van.</p>
+    <h1>Caravana brings <strong>vans</strong> to <strong>you</strong>!</h1>
+    <p>Change your life, discover and travel with  the <strong>perfect</strong> van for you.</p>
+  </div>
+</div>
+
+<% @vans = Van.all %>
+
+<div class="container">
+  <div class="mx-auto mt-5" style="width: 80%;">
+    <div class="row">
+      <div class="col justify-content-around row">
+        <% @vans.each do |van| %>
+          <div class="col-3 card-trip border rounded-4 px-0 m-2 d-flex flex-column justify-content-between">
+              <div class="d-flex align-items-center ">
+                <div id="carouselExampleIndicators" class=" card-trip-img carousel slide" data-bs-ride="true">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item card-trip-img active">
+                      <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
+                    </div>
+                    <div class="carousel-item card-trip-img">
+                      <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
+                    </div>
+                    <div class="carousel-item card-trip-img">
+                      <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+
+
+
+
+              </div>
+            <div class="m-2">
+              <div class= "d-flex justify-content-start">
+                <h2 style="color: #003459;"><%=van.brand%> </h2>
+              </div>
+              <div class="my-2 d-flex flex-column">
+                <p class="card-text" style="color: #003459;"><%=van.location%></p>
+              </div>
+              <div class="d-flex flex-row justify-content-between">
+                <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%=van.price_per_day%><i class="fa-solid fa-euro-sign"></i> day</span></p>
+                <p><%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%>  <%= link_to "Edit", edit_van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
+                <%= link_to "", @van, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"card-trip-user fa-solid fa-trash-can" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

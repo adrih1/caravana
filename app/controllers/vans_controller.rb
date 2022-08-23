@@ -6,6 +6,7 @@ class VansController < ApplicationController
   # GET /van/1
   def show
     @van = Van.find(params[:id])
+    @booking = Booking.new
     #@review = Review.new
   end
 

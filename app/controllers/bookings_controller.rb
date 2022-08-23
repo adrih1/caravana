@@ -2,14 +2,18 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @van = Van.find(params[:van_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @van = Van.find(params[:van_id])
+    @booking.user = current_user
+    @booking.van = @van
     if @booking.save
-      redirect_to root_path
+      redirect_to bookings_path(@van), notice: "Booking was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render 'vans/show', status: :unprocessable_entity
     end
   end
 
@@ -19,7 +23,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to root_path, status: :see_other, notice : "Booking was succesfully deleted, hope to see you soon"
+    redirect_to root_path, status: :see_other, notice: "Booking was succesfully deleted, hope to see you soon"
   end
 end
 
