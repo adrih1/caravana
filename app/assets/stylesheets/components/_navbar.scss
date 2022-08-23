@@ -1,12 +1,27 @@
-.navbar-lewagon {
+
+.navbar {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   background: white;
+  padding: 10px 20px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-right{
+  display: flex;
+  flex-direction: row;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-nav{
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item{
+  padding: 5px;
+}
+
+
+.navbar .navbar-brand img {
   width: 40px;
 }
