@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+#Cloudinary gem
+gem "cloudinary"
+
+# Secret gem
+gem "dotenv-rails", groups: [:development, :test]
+
 #faker gem
 gem "faker"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
