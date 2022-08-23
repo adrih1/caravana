@@ -1,6 +1,15 @@
 // CARD INDEX/SHOW
 
 
+.cards {
+  margin: 0 auto;
+  max-width: 1500px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 20px;
+}
+
+
 .card-trip {
   overflow: hidden;
   background: white;
