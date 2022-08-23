@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to root_path, status: :see_other, notice : "Booking was succesfully deleted, hope to see you soon"
+    redirect_to root_path, status: :see_other, notice: "Booking was succesfully deleted, hope to see you soon"
   end
 end
 
