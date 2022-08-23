@@ -8,20 +8,25 @@ class VansController < ApplicationController
     @van = Van.find(params[:id])
     @booking = Booking.new
     #@review = Review.new
+    authorize @van
   end
 
   # GET /van/new
   def new
     @van = Van.new
+    authorize @van
   end
 
   # GET /van/1/edit
   def edit
+    authorize @van
   end
 
   # POST /van
   def create
     @van = Van.new(van_params)
+    @van.user = current_user
+    authorize @van
     if @van.save
       redirect_to @van, flash: { notice: "Successfully created" }
     else
