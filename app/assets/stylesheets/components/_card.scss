@@ -1,3 +1,6 @@
+// CARD INDEX/SHOW
+
+
 .card-trip {
   overflow: hidden;
   background: white;
@@ -39,4 +42,69 @@
 a:hover {
   opacity: 0.8;
   color: red;
+}
+
+
+
+
+
+
+
+
+
+// CARD DASHBOARD
+
+
+
+.card-trip-dashboard {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.card-trip-img-dashboard > img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.card-trip-dashboard h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip-dashboard p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-trip-dashboard .card-trip-infos {
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+ .card-trip-user {
+  opacity: 0.3;
+  color: red;
+}
+
+.days {
+
+  position: absolute;
+  top: 260px;
+  left: 10px;
+  background-color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  padding: 6px 16px;
+  font-weight: 700;
+  color: #003459;
+
 }
