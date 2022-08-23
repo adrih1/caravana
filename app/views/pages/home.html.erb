@@ -13,11 +13,12 @@
   </div>
   <div class="navbar-right" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto">
-      <li class="nav-item active">
-        <%=link_to "Log In", new_user_session_path, class:"nav-link"%>
+      <li class="nav-item active " data-bs-toggle="modal" data-bs-target="#loginModal">
+        <a class="nav-link" href="#">Log In</a>
+         <%# <%=link_to "Log In", new_user_session_path, class:"nav-link"%>
       </li>
       <li class="nav-item">
-        <%=link_to "Sign Up",  new_user_registration_path, class:"nav-link" %>
+        <a data-bs-toggle="modal" data-bs-target="#signinModal" class="nav-link" href="#">Sign Up</a>
       </li>
       <li class="nav-item">
         <%=link_to "Sign Out",  destroy_user_session_path, data: {turbo_method: :delete}, class:"nav-link" %>
@@ -89,6 +90,77 @@
             </div>
           </div>
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal  SIGN IN-->
+<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <div class="form-container">
+          <h2>Sign up</h2>
+
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" }%>
+              <%= f.input :password,
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          required: true,
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+
+            <div class="btn btn-primary btn-sm">
+              <%= f.button :submit, "Sign up", style: "color: white;" %>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal LOG IN -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+            <div class="form-container">
+              <h2>Log in</h2>
+
+              <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),  data: {turbo: false}) do |f| %>
+                <div class="form-inputs">
+                  <%= f.input :email,
+                              required: false,
+                              autofocus: true,
+                              input_html: { autocomplete: "email" } %>
+                  <%= f.input :password,
+                              required: false,
+                              input_html: { autocomplete: "current-password" } %>
+                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                </div>
+
+                <div class="btn btn-primary btn-sm">
+                  <%= f.button :submit, "Log in", style: "color: white;"  %>
+                </div>
+              <% end %>
+          </div>
       </div>
     </div>
   </div>
