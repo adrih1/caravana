@@ -51,6 +51,7 @@ class VansController < ApplicationController
     redirect_to vans_path, status: :see_other
   end
 
+
   private
 
   def van_params
@@ -58,3 +59,4 @@ class VansController < ApplicationController
   end
 
 end
+
