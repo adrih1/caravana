@@ -5,6 +5,6 @@
   <%= f.input :price_per_day%>
   <%= f.input :mileage %>
   <%= f.input :location %>
-  <%# <%= f.input :picture_url %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit "create your van", class: "btn btn-primary" %>
 <% end %>
