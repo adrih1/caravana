@@ -21,7 +21,7 @@ class VansController < ApplicationController
   # POST /van
   def create
     @van = Van.new(van_params)
-    @van.user = User.first #current_user
+    @van.user = current_user
     @van.save
     if @van.save
       redirect_to van_path(@van), flash: { notice: "Successfully created" }
