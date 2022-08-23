@@ -1,6 +1,54 @@
+<div class="navbar">
+  <div class="navbar-logo">
+    <%=link_to vans_path do %>
+      <a class="navbar-brand">
+        <img src="https://www.mpadeco.com/thumb.php?zc=3&f=0&src=/sites/mpadeco/files/products/a7919613977f4838bc2ba176ef45c515.png&fl=none&w=500&h=500" />
+      </a>
+    <%end%>
+  </div>
+  <div class="navbar-right" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto">
+        <li class="nav-item active">
+          <%=link_to "Log In", new_user_session_path, class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%=link_to "Sign Up",  new_user_registration_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%=link_to "Sign Out",  destroy_user_session_path, data: {turbo_method: :delete}, class:"nav-link" %>
+        </li>
+    </ul>
+  </div>
+</div>
+
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80);">
   <div class="container">
-    <h1>Caravana bring <strong>vans</strong> to <strong>hippies people</strong>!</h1>
-    <p>Change your life and learn to travel with a beautiful van.</p>
+    <h1>Caravana brings <strong>vans</strong> to <strong>you</strong>!</h1>
+    <p>Change your life, discover and travel with  the <strong>perfect</strong> van for you.</p>
   </div>
+</div>
+
+<div class="container">
+  <div id="vans">
+    <div class="row">
+      <% @vans = Van.all %>
+        <%@vans.each do |van|%>
+          <div class="col m-1">
+            <div class="card" style="width: 18rem; height:24rem">
+              <div class="card-body">
+                <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80" alt="" style="width:100%; height:60%; object-fit: cover;">
+                <h5 class="card-title"><%=van.brand%></h5>
+                <p class="card-text"><%=van.location%></p>
+                <div class='d-flex'>
+                  <p style="margin-right:10px;">2<i class="fa-solid fa-user-group"></i></p>
+                  <p><%=van.price_per_day%><i class="fa-solid fa-euro-sign"></i></p>
+                </div>
+
+              </div>
+              <div class="bouton_card d-flex"  style="background-color:#F8F9FA;">
+              <p><%= link_to "En savoir plus", van_path(van), style:"color:blue;"%>  <%= link_to "Edit", edit_van_path(van), style:"color:yellow;"%>     <%= link_to "Remove", @van, method: :delete , style:"color:red;"%>     </p> </div>
+            </div>
+          </div>
+      <% end %>
 </div>
