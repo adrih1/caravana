@@ -22,5 +22,17 @@
 }
 
 .navbar .navbar-brand img {
-  width: 40px;
+  width: 30px;
+}
+
+
+
+.navbar {
+  /* [...] */
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+}
+
+.navbar-lewagon-white {
+  background-color: white;
 }
