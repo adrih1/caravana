@@ -26,17 +26,30 @@ class VansController < ApplicationController
   def create
     @van = Van.new(van_params)
     @van.user = current_user
-    authorize @van
+    @van.save
     if @van.save
-      redirect_to @van, flash: { notice: "Successfully created" }
+      redirect_to van_path(@van), flash: { notice: "Successfully created" }
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def update
+    if @van.update(van_params)
+      redirect_to van_path(@van)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @van.destroy
+    redirect_to vans_path, status: :see_other
+  end
+
   private
 
   def van_params
-    params.require(:van).permit(:description, :color, :location, :price_per_day, :brand, :mileage, :user_id)
+    params.require(:van).permit(:description, :color, :location, :price_per_day, :brand, :mileage)
   end
 end
