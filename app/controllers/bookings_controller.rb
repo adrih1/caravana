@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :skip_authorization
 
   def new
     @booking = Booking.new
