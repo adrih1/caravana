@@ -83,8 +83,13 @@
               </div>
               <div class="d-flex flex-row justify-content-between">
                 <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%=van.price_per_day%><i class="fa-solid fa-euro-sign"></i> day</span></p>
-                <p><%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%>  <%= link_to "Edit", edit_van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
-                <%= link_to "", @van, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"card-trip-user fa-solid fa-trash-can" %>
+                <p>
+                <%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%>
+                <% if policy(van).edit? %>
+                    <%= link_to "Edit", edit_van_path(van), style:"color:#00477A; text-decoration: none;"%>
+                <% end %>
+                </p>
+                <%= link_to "", @van, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"card-trip-user fa-solid fa-trash-can", method: :delete if policy(van).destroy? %>
               </div>
             </div>
           </div>
