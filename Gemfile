@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
-
+gem "jquery-rails"
 #faker gem
 gem "faker"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
