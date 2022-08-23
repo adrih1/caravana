@@ -39,6 +39,12 @@ class VansController < ApplicationController
     end
   end
 
+  def destroy
+    @van.destroy
+    redirect_to vans_path, status: :see_other
+  end
+  end
+
   private
 
   def van_params
