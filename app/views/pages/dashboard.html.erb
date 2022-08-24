@@ -23,7 +23,7 @@
       <div class="vans-container-header">
         <div class="vans-container-header-left">
           <p class="rentals-to-come">Locations à venir </p>
-          <p class="rentals-number"><em>(8)</em></p>
+          <p class="rentals-number"><em>  (<%=Booking.all.count%>)</em></p>
         </div>
         <p class="time"><%= Time.now %></p>
       </div>
@@ -43,7 +43,17 @@
           </div>
           <div class="d-flex flex-row justify-content-around">
             <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
-            <p class= "days"> In 48 days</p>
+            <p class= "days">
+               <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
+                  @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
+                  @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
+                    %>
+               <%if @r < 0 %>
+                 <%= "#{@r * (-1)} days ago" %>
+               <%else%>
+                 <%= "In #{@r} days" %>
+               <%end%>
+            </p>
           </div>
         </div>
         <img class="card-trip-img-dashboard" src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
