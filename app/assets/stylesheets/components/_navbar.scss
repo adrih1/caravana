@@ -4,11 +4,12 @@
   justify-content: space-between;
   background: red;
   padding: 10px 20px;
-  background-color: transparent;
+  background-color: white;
   transition: 0.5s background-color ease;
   position: fixed;
   width: 100%;
   margin-bottom: 15px;
+  z-index: 9999;
 }
 
 .navbar-white{
@@ -55,9 +56,4 @@
 
 .navbar-logo img {
   width: 25px;
-}
-
-
-.navbar-lewagon-white {
-  background-color: white;
 }

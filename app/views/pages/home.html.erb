@@ -18,7 +18,7 @@
 </div>
 <% @vans = Van.all %>
 
-  <div class="mx-auto mt-5" style="width: 90%;">
+  <div class="mx-auto mt-5" style="width: 90%;" id="startchange">
       <div class="cards ">
         <% @vans.each do |van| %>
           <div class=" card-trip border rounded-4">
@@ -147,3 +147,23 @@
     </div>
   </div>
 </div>
+
+
+<script>
+$(document).ready(function(){
+   var scroll_start = 0;
+   var startchange = $('#startchange');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() {
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".navbar").css('background-color', '#f0f0f0');
+       } else {
+          $('.navbar').css('background-color', 'transparent');
+       }
+   });
+    }
+});
+
+</script>
