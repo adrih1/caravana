@@ -31,13 +31,13 @@
                   </div>
                   <div class="carousel-inner">
                     <div class="carousel-item card-trip-img active">
-                      <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
+                      <%= cl_image_tag van.photos.first.key, height: 300, width: 400, crop: :fill %>
                     </div>
                     <div class="carousel-item card-trip-img">
-                      <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
+                      <%= cl_image_tag van.photos.second.key, height: 300, width: 400, crop: :fill%>
                     </div>
                     <div class="carousel-item card-trip-img">
-                      <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
+                      <%= cl_image_tag van.photos.last.key, height: 300, width: 400, crop: :fill%>
                     </div>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -51,8 +51,6 @@
                 </div>
 
 
-
-
               </div>
             <div class="m-2">
               <div class= "d-flex justify-content-start">
@@ -63,13 +61,13 @@
               </div>
               <div class="d-flex flex-row justify-content-between">
                 <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%=van.price_per_day%><i class="fa-solid fa-euro-sign"></i> day</span></p>
-                <p>
-                <%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%>
                 <% if policy(van).edit? %>
-                    <%= link_to "Edit", edit_van_path(van), style:"color:#00477A; text-decoration: none;"%>
+                  <p class="know-more"><%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
+                  <p class="edit"><%= link_to "Edit", edit_van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
+                  <%= link_to "", @van, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"card-trip-user fa-solid fa-trash-can", method: :delete if policy(van).destroy? %>
+                <% else %>
+                  <p class="know-more"><%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
                 <% end %>
-                </p>
-                <%= link_to "", @van, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"card-trip-user fa-solid fa-trash-can", method: :delete if policy(van).destroy? %>
               </div>
             </div>
           </div>

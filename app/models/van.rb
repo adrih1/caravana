@@ -1,6 +1,6 @@
 class Van < ApplicationRecord
-  has_many :bookings
-  has_one_attached :photo
+  has_many :bookings, dependent: :destroy
+  has_many_attached :photos
   belongs_to :user
   validates :description, presence: true, length: { minimum: 20 }
   validates :location, presence: true
