@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
+require "open-uri"
 
 puts "Cleaning DB"
 Van.destroy_all
@@ -39,7 +40,17 @@ puts 'Creating 15 fake vans...'
     price_per_day: rand(50..500),
     mileage: Faker::Vehicle.mileage,
     user_id: User.all.sample.id
-  })
+    })
+
+  file1 = URI.open("https://source.unsplash.com/random/?trucks")
+  van.photos.attach(io: file1, filename: "file1.jpg", content_type: "image.jpg")
+
+  file2 = URI.open("https://source.unsplash.com/random/?trucks")
+  van.photos.attach(io: file2, filename: "file2.jpg", content_type: "image.jpg")
+
+  file2 = URI.open("https://source.unsplash.com/random/?trucks")
+  van.photos.attach(io: file2, filename: "file3.jpg", content_type: "image.jpg")
   van.save!
 end
+
 puts 'Finished!'
