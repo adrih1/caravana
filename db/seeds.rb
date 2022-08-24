@@ -47,13 +47,13 @@ puts 'Creating 15 fake vans...'
   p van
   p van.title
 
-  file1 = URI.open("https://source.unsplash.com/random/?trucks")
+  file1 = URI.open("https://source.unsplash.com/random/900x700/?vanlife")
   van.photos.attach(io: file1, filename: "file1.jpg", content_type: "image.jpg")
 
-  file2 = URI.open("https://source.unsplash.com/random/?trucks")
+  file2 = URI.open("https://source.unsplash.com/random/900x700/?vanlife")
   van.photos.attach(io: file2, filename: "file2.jpg", content_type: "image.jpg")
 
-  file2 = URI.open("https://source.unsplash.com/random/?trucks")
+  file2 = URI.open("https://source.unsplash.com/random/900x700/?vanlife")
   van.photos.attach(io: file2, filename: "file3.jpg", content_type: "image.jpg")
   van.save!
 end
