@@ -44,6 +44,9 @@ puts 'Creating 15 fake vans...'
     user_id: User.all.sample.id
   })
 
+  p van
+  p van.title
+
   file1 = URI.open("https://source.unsplash.com/random/?trucks")
   van.photos.attach(io: file1, filename: "file1.jpg", content_type: "image.jpg")
 
