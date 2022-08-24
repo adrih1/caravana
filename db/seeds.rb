@@ -33,7 +33,7 @@ puts 'Finished!'
 puts 'Creating 15 fake vans...'
 15.times do
   van = Van.new({
-    title: Faker::Company.bs,
+    title: Faker::Hipster.sentence(word_count: 3),
     color: Faker::Vehicle.color,
     capacity: rand(2..8),
     description: Faker::Lorem.paragraphs(number: 3).join,
