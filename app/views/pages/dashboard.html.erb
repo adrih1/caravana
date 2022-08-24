@@ -1,6 +1,4 @@
 
-
-
 <div class="app-container">
   <div class="app-content">
     <div class="app-sidebar">
@@ -28,43 +26,37 @@
         <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
       </div>
 
-
-
       <%# CARD DASHBOARD %>
-      <div class = "dashboard-cards" >
-        <% @bookings.each do |booking| %>
-        <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 d-flex flex-column justify-content-between">
-          <div class="m-2">
-            <div class= "d-flex justify-content-center">
-              <h2 style="color: #003459;"> Titre Van </h2>
-            </div>
-            <div class="my-2 d-flex justify-content-center ">
-              <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
-            </div>
-            <div class="d-flex flex-row justify-content-around">
-              <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
-              <p class= "days">
-                <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
-                    @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
-                    @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
-                      %>
-                <%if @r < 0 %>
-                  <%= "#{@r * (-1)} days ago" %>
-                <%else%>
-                  <%= "In #{@r} days" %>
-                <%end%>
-              </p>
-            </div>
+
+      <% @bookings.each do |booking| %>
+      <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 d-flex flex-column justify-content-between">
+        <div class="m-2">
+          <div class= "d-flex justify-content-center">
+            <h2 style="color: #003459;"> Titre Van </h2>
           </div>
-          <div class="card-trip-img-dashboard">
-            <%= cl_image_tag booking.van.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <div class="my-2 d-flex justify-content-center ">
+            <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
+          </div>
+          <div class="d-flex flex-row justify-content-around">
+            <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
+            <p class= "days">
+               <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
+                  @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
+                  @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
+                    %>
+               <%if @r < 0 %>
+                 <%= "#{@r * (-1)} days ago" %>
+               <%else%>
+                 <%= "In #{@r} days" %>
+               <%end%>
+            </p>
           </div>
         </div>
-
-
-        <% end %>
-
+           <div class="card-trip-img-dashboard">
+            <%= cl_image_tag booking.van.photos.first.key, height: 300, width: 400, crop: :fill %>
+          </div>
       </div>
+      <% end %>
     </div>
 
   </div>
