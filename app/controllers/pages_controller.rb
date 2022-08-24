@@ -18,15 +18,12 @@ class PagesController < ApplicationController
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-
-
   def home
   end
 
   def dashboard
    # @bookings = Booking.find_by user_id: current_user.id
    @bookings = current_user.bookings
-
   end
 
   def my_vans
