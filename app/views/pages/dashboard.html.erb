@@ -23,7 +23,7 @@
           <p class="rentals-to-come">Locations à venir </p>
           <p class="rentals-number"><em>  (<%=Booking.all.count%>)</em></p>
         </div>
-        <p class="time"><%= Time.now %></p>
+        <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
       </div>
 
       <%# CARD DASHBOARD %>

@@ -8,4 +8,5 @@ class Van < ApplicationRecord
   validates :color, presence: true
   validates :brand, presence: true
   validates :mileage, presence: true
+  validates :title, presence: true
 end
