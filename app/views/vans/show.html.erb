@@ -10,14 +10,10 @@
       <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80" alt="" style="width:100%; height:100%;border-radius: 5px;">
     </div>
     <div class="cards" style="height:400px;width:50%">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      </div>
-
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-      </div>
-
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-      </div>
+      <% @van.photos.each do |photo| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path photo.key%>)">
+        </div>
+        <% end %>
     </div>
   </div>
 
@@ -34,7 +30,7 @@
           <h4>Van proposition:</h4>
           <p style="margin-bottom:10px"><%=@van.description%></p>
         </div>
-        <div class="border-bottom" style="margin-top:20px">
+        <div style="margin-top:20px">
           <h4>Van caracteristics:</h4>
           <p><i class="fa-solid fa-road"></i>  <%= @van.mileage %> mileage</p>
           <p><i class="fa-solid fa-brush"></i>  <%= @van.color %></p>
@@ -70,8 +66,8 @@
         </div>
       </div>
     <div style="width:35%">
-      <div class="card card-trip" style="background-color:white;margin-top:15px;background-attachment: scroll;">
-        <div class="card-body">
+      <div class="card card-trip" style="background-color:white;margin-top:15px;">
+        <div class="card-body" style="position: sticky;">
           <h6 class="card-title" style="text-align:"><%=@van.price_per_day%>€ / nuit</h6>
             <%= simple_form_for [@van, @booking] do |f| %>
             <%= f.input :start_date, as: :date, html5: true %>
@@ -86,4 +82,11 @@
       </div>
     </div>
   </div>
+</div>
+<div class="container van-show border-top d-flex justify-content-center"  style="width:70%;margin-top:20px">
+    <div style="margin-top:20px">
+      <h4>Van location</h4>
+      <p><%=@van.location%></p>
+      <%= image_tag "map_fake", style: 'height:30vw;width:50vw;margin-bottom:20px;' %>
+    </div>
 </div>
