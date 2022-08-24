@@ -1,4 +1,6 @@
 class VansController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
+
   def index
     @vans = policy_scope(Van)
   end

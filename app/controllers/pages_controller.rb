@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
+  skip_before_action :authenticate_user!, only: :home
 
   def resource_name
     :user
@@ -17,7 +18,6 @@ class PagesController < ApplicationController
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  skip_before_action :authenticate_user!, only: :home
 
 
   def home
