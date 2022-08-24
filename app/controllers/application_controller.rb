@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  helper_method :resource_name, :resource, :devise_mapping, :resource_class
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   include Pundit::Authorization
