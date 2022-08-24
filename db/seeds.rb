@@ -33,9 +33,11 @@ puts 'Finished!'
 puts 'Creating 15 fake vans...'
 15.times do
   van = Van.new({
+    title: Faker::Company.bs,
     color:  Faker::Vehicle.color,
+    capacity: rand(2..8),
     description: Faker::Lorem.paragraphs(number: 3).join,
-    location:Faker::Address.street_name,
+    location: Faker::Address.street_name,
     brand: Faker::Vehicle.make,
     price_per_day: rand(50..500),
     mileage: Faker::Vehicle.mileage,
