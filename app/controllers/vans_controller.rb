@@ -48,7 +48,7 @@ class VansController < ApplicationController
   end
 
   def destroy
-    authozie @van
+    authorize @van
     @van.destroy
     redirect_to vans_path, status: :see_other
   end
