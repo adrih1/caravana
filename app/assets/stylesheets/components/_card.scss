@@ -19,7 +19,7 @@
 
 .card-trip-img > img {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .card-trip h2 {
@@ -74,7 +74,7 @@ a:hover {
 
 .card-trip-img-dashboard > img {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .card-trip-dashboard h2 {
