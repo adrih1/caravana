@@ -20,7 +20,9 @@
 
   <div class="mx-auto mt-5" style="width: 90%;">
       <div class="cards ">
+
         <% @vans.each do |van| %>
+          <%= link_to van_path(van), style: "text-decoration: none;  " do %>
           <div class=" card-trip border rounded-4">
               <div class="d-flex align-items-center ">
                 <div id="carouselExampleIndicators-<%= van.id %>" class=" card-trip-img carousel slide" data-bs-ride="true">
@@ -62,15 +64,14 @@
               <div class="d-flex flex-row justify-content-between">
                 <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%=van.price_per_day%><i class="fa-solid fa-euro-sign"></i> day</span></p>
                 <% if policy(van).edit? %>
-                  <p class="know-more"><%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
                   <p class="edit"><%= link_to "Edit", edit_van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
                   <%= link_to "", @van, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"card-trip-user fa-solid fa-trash-can", method: :delete if policy(van).destroy? %>
                 <% else %>
-                  <p class="know-more"><%= link_to "En savoir plus", van_path(van), style:"color:#00477A; text-decoration: none;"%></p>
                 <% end %>
               </div>
             </div>
           </div>
+          <% end %>
         <% end %>
       </div>
     </div>
