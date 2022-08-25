@@ -2,5 +2,9 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
-//= require sweetalert2
-//= require rails-sweetalert2-confirm
+
+import { initFlatpickr } from '../plugins/flatpickr';
+
+document.addEventListener('turbolinks:load', () => {
+  initFlatpickr();
+})
