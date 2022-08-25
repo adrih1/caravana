@@ -5,7 +5,7 @@
 
 <div class="banner">
   <div class="cover">
-    <h1>Discover what's a trip is.</h1>
+    <h1>Discover what a trip is.</h1>
     <form  class="flex-form">
       <label for="from">
         <i class="ion-location"></i>
@@ -21,14 +21,14 @@
 <div class="mx-auto mt-5" style="width: 90%;">
   <div class="cards">
     <% @vans.each do |van| %>
-    <%= link_to van_path(van) do %>
+    <%= link_to van_path(van), style: "text-decoration: none;" do %>
       <div class="card-trip border rounded-4">
         <div class="d-flex align-items-center ">
-          <div id="carouselExampleIndicators" class=" card-trip-img carousel slide" data-bs-ride="true">
+          <div id="carouselExampleIndicators-<%=van.id%>" class=" card-trip-img carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators-<%=van.id%>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators-<%=van.id%>" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators-<%=van.id%>" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
               <div class="carousel-item card-trip-img active">
@@ -41,11 +41,11 @@
                 <%= cl_image_tag van.photos.last.key, height: 300, width: 400, crop: :fill%>
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators-<%=van.id%>" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators-<%=van.id%>" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
