@@ -9,6 +9,8 @@ gem "cloudinary"
 #map
 gem "geocoder"
 
+gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert2-rails'
 # Secret gem
 gem "dotenv-rails", groups: [:development, :test]
 
