@@ -1,23 +1,21 @@
 
 <div style="display:block;">
 
-<div class="app-container" style="padding: 70px 0px">
+<div class="app-container" style="padding-top: 100px; padding-bottom: 30px">
 
   <div class="app-content">
     <div class="app-sidebar">
-          <div class="app-sidebar-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" /></svg>
-          </div>
           <%= link_to my_vans_path do %>
-          <div href="" class="app-sidebar-link active">
-            <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-pie-chart" viewBox="0 0 24 24">
-              <defs />
-              <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
-            </svg>
-          </div>
-        <%end%>
+            <div class="app-sidebar-link">
+              <i class="fa-solid fa-van-shuttle"></i>
+            </div>
+          <%end%>
+
+          <%= link_to dashboard_path do %>
+            <div class="app-sidebar-link">
+              <i class="fa-solid fa-calendar"></i>
+            </div>
+          <%end%>
         </div>
 
         <div class="vans-container" style = "overflow-x: scroll;">
@@ -33,9 +31,19 @@
             <% @count += 1 %>
             <%end%>
             <%end%>
-              <p class="rentals-to-come">Locations à venir <em>  (<%=@count%>)</em></p>
+              <p class="rentals-to-come">Upcoming Rentals <em>  (<%=@count%>)</em></p>
             </div>
+            <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
           </div>
+
+           <% if @count = 0 %>
+              <div class="vans-container-empty">
+                <p>You have no upcoming rentals</p>
+                <div class="btn-classic">
+                   <%= link_to "Go book an adventure!",  root_path %>
+                </div>
+              </div>
+          <%end%>
 
           <%# CARD DASHBOARD %>
           <div class = "dashboard-cards" >
@@ -81,7 +89,7 @@
 </div>
 
 
-<div class="app-container" style = "margin-left:70px;padding-right:70px;">
+<div class="app-container" style = "margin-left:70px;padding-right:70px;margin-bottom:50px">
   <div class="app-content">
         <div class="vans-container" style = "overflow-x: scroll;">
         <div class="vans-container-header">
@@ -96,11 +104,18 @@
             <% @count += 1 %>
             <%end%>
             <%end%>
-              <p class="rentals-to-come">Locations passées</p>
-              <p class="rentals-number"><em>  (<%=@count%>)</em></p>
+              <p class="rentals-number">Previous Rentals <em>  (<%=@count%>)</em></p>
             </div>
-            <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
           </div>
+
+          <% if @count = 0 %>
+              <div class="vans-container-empty">
+                <p>You have never booked a van</p>
+                <div class="btn-classic">
+                  <%= link_to "Go book an adventure!",  root_path %>
+                </div>
+              </div>
+          <%end%>
 
           <%# CARD DASHBOARD %>
           <div class = "dashboard-cards">
