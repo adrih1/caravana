@@ -39,6 +39,33 @@
       <h1>Your Vans</h1>
       <div class="my_vans-previous-cards">
 
+      <%# CARD DASHBOARD %>
+
+      <% if @vans.empty? %>
+      <div class="my_vans d-flex justify-content-center" style="margin-bottom:20px">
+        <div class="cards" style="height:300px;width:600px">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80)">
+            <%= link_to "Add your Van ＋", new_van_path, data:{turbo_method: :new}, style: "text-decoration: none;  ", class:"btn-classic" %>
+          </div>
+        </div>
+        <% else%>
+          <div class = "dashboard-cards" >
+            <% @vans.each do |van| %>
+                <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 d-flex flex-column justify-content-between">
+                <div class="m-2">
+                  <div class= "d-flex justify-content-center">
+                    <h2 style="color: #003459;"> Titre Van </h2>
+                  </div>
+                  <div class="my-2 d-flex justify-content-center ">
+                    <p class="card-text-dashboard" style="color: #003459;"> <%= van.brand %> -  <%= van.location %></p>
+                    <%= link_to "", van_path(van), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"fa-solid fa-trash-can" %>
+                  </div>
+                </div>
+                <img class="card-trip-img-dashboard" src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
+              </div>
+            <% end %>
+          </div>
+        <%end%>
       </div>
     </div>
   </div>
