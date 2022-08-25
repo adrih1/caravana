@@ -16,8 +16,9 @@ class VansController < ApplicationController
     @van = Van.find(params[:id])
     @booking = Booking.new
     authorize @van
-
-    @marker = [lat: @van.geocode[0], lng: @van.geocode[1]]
+    if @van.geocode
+      @marker = [lat: @van.geocode[0], lng: @van.geocode[1]]
+    end
   end
 
   # GET /van/new
