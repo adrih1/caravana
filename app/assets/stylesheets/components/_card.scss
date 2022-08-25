@@ -71,6 +71,7 @@
 .card-trip-img-dashboard > img {
   width: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .card-trip-dashboard h2 {
@@ -110,5 +111,4 @@
   padding: 6px 16px;
   font-weight: 700;
   color: #003459;
-
 }

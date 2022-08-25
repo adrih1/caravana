@@ -17,16 +17,19 @@
 
   <div class="my_vans-all-content">
     <div class="my_vans-content">
-      <h1>Your Rentals</h1>
+      <div class="my_vans-header">
+      <h1 class="my_vans-title">Your Rentals</h1>
+      <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
+      </div>
       <div class="my_vans-currently-container">
-        <h2>Currently Booked</h2>
+        <h2 class="my_vans-subtitle">Currently Booked</h2>
         <div class="my_vans-currently-cards">
           <p>Some random card</p>
           <p>Some random card</p>
         </div>
       </div>
       <div class="my_vans-previous-container">
-        <h2>Previously Booked</h2>
+        <h2 class="my_vans-subtitle">Previously Booked</h2>
         <div class="my_vans-previous-cards">
           <p>Some random card</p>
           <p>Some random card</p>
@@ -36,7 +39,7 @@
 
 
     <div class="my_vans-content">
-      <h1>Your Vans</h1>
+      <h1 class="my_vans-title">Your Vans</h1>
       <div class="my_vans-previous-cards">
 
       <%# CARD DASHBOARD %>
