@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
 .my_vans-container{
   display: flex;
   height: 100%;
@@ -20,12 +22,45 @@
   align-items: center;
 }
 
+.my_vans-header{
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.time {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: lighter;
+}
+
 .my_vans-content{
   margin-top: 20px;
   padding: 20px 20px;
   width: 90%;
   background-color:white;
   border-radius: 5px;
+}
+
+.my_vans-title{
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  opacity: .9;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.my_vans-subtitle{
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+  opacity: .9;
+  margin: 0;
+  margin-bottom: 5px;
 }
 
 // CURRENTLY
