@@ -18,7 +18,8 @@ class VansController < ApplicationController
     #@review = Review.new
     authorize @van
 
-    @marker =  [lat: @van.geocode[0], lng: @van.geocode[1]]
+    @marker =  [lat: @van.geocode[0], lng: @van.geocode[1] ]
+
 
 
   end
@@ -66,6 +67,6 @@ class VansController < ApplicationController
   private
 
   def van_params
-    params.require(:van).permit(:title, :capacity, :description, :color, :location, :price_per_day, :brand, :mileage, :picture)
+    params.require(:van).permit(:title, :capacity, :description, :color, :location, :price_per_day, :brand, :mileage, photos:[])
   end
 end

@@ -13,6 +13,22 @@ Van.destroy_all
 User.destroy_all
 puts "DB cleaned"
 
+puts 'Creating 15 fake users...'
+15.times do
+  user = User.new({
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      address: Faker::Address.street_name,
+      bio: Faker::Lorem.paragraphs(number: 3).join,
+      age: rand(21..80),
+      driving_license: Faker::IDNumber.spanish_citizen_number,
+      phone_number: Faker::PhoneNumber.phone_number,
+      email: Faker::Internet.email,
+      password: Faker::Code.nric
+    })
+  user.save!
+end
+puts 'Finished!'
 
 puts 'Creating fake vans...'
 
