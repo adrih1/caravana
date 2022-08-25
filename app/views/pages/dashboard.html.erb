@@ -136,7 +136,7 @@
                   <div class="d-flex flex-row justify-content-around">
                     <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
                       <% unless booking.review %>
-                        <p class= "days">
+                        <p class= "days-review">
                           <%= link_to "add a review", new_booking_review_path(booking.id), style: 'text-decoration: none; color:#white'%>
                         </p>
                       <% end %>
