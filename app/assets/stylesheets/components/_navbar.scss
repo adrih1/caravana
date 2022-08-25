@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: row;
   width: 10%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -126,4 +126,15 @@
 #signout {
   border-top: 7px;
   border-width: 10px;
+}
+
+
+.nav-link {
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: #005FA3;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
