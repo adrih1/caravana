@@ -33,9 +33,19 @@
             <% @count += 1 %>
             <%end%>
             <%end%>
-              <p class="rentals-to-come">Locations à venir <em>  (<%=@count%>)</em></p>
+              <p class="rentals-to-come">Upcoming Rentals <em>  (<%=@count%>)</em></p>
             </div>
+             <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
           </div>
+
+          <% if @count = 0 %>
+              <div class="vans-container-empty">
+                <p>You have no rentals for now</p>
+                <div class="btn-classic">
+                  <p>Go book an adventure !</p>
+                </div>
+              </div>
+          <%end%>
 
           <%# CARD DASHBOARD %>
           <div class = "dashboard-cards" >
@@ -96,11 +106,11 @@
             <% @count += 1 %>
             <%end%>
             <%end%>
-              <p class="rentals-to-come">Locations passées</p>
-              <p class="rentals-number"><em>  (<%=@count%>)</em></p>
+              <p class="rentals-number">Passed Rentals <em>  (<%=@count%>)</em></p>
             </div>
-            <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
           </div>
+
+
 
           <%# CARD DASHBOARD %>
           <div class = "dashboard-cards">
