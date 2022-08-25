@@ -1,0 +1,76 @@
+.my_vans-container{
+  display: flex;
+  height: 100%;
+}
+
+.my_vans-sidebar-container{
+  height: 100%;
+  display: flex;
+}
+
+.my_vans-sidebar{
+  display: flex;
+  flex-direction: column;
+  margin-right: 25px;
+  margin-left: 5px;
+}
+
+.my_vans-all-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.my_vans-content{
+  margin-top: 20px;
+  padding: 20px 20px;
+  width: 90%;
+  background-color:white;
+  border-radius: 5px;
+}
+
+// CURRENTLY
+.my_vans-currently-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.my_vans-currently-container h2{
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.my_vans-currently-cards{
+  display: flex;
+}
+
+.my_vans-currently-cards p{
+  margin-right: 10px;
+}
+
+// PREVIOUS
+.my_vans-previous-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.my_vans-previous-container h2{
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.my_vans-previous-cards{
+  display: flex;
+}
+
+.my_vans-previous-cards p{
+  margin-right: 10px;
+}
+
+
+
+.my_vans-previous-cards{
+  display: flex;
+}
