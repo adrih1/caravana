@@ -18,7 +18,8 @@ class VansController < ApplicationController
     #@review = Review.new
     authorize @van
 
-    @marker =  [lat: @van.geocode[0], lng: @van.geocode[1]]
+    @marker =  [lat: @van.geocode[0], lng: @van.geocode[1] ]
+
 
 
   end
