@@ -123,6 +123,26 @@
     </div>
   </div>
 </div>
+
+
+<div class="container" style="width:80%;margin-top:20px">
+  <div class="row" style='margin-top:20px;'>
+    <div class="col margin:20px;">
+      <h3><span class="mov"> </span></h3>
+      <% @van.bookings.each do |booking| %>
+      <div class="border-bottom">
+        <div class="d-flex">
+          <%= "⭐️" * booking.review.rating %>
+        </div>
+        <%= booking.review.content %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="container van-show border-top d-flex justify-content-center flex-column"  style="width:80%;margin-top:20px">
   <div style="margin-top:20px">
     <h4>Location</h4>
