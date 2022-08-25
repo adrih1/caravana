@@ -17,6 +17,9 @@ class VansController < ApplicationController
     @booking = Booking.new
     #@review = Review.new
     authorize @van
+    if @van.geocode
+      @marker = [lat: @van.geocode[0], lng: @van.geocode[1]]
+    end
   end
 
   # GET /van/new
@@ -62,6 +65,6 @@ class VansController < ApplicationController
   private
 
   def van_params
-    params.require(:van).permit(:title, :capacity, :description, :color, :location, :price_per_day, :brand, :mileage, :picture)
+    params.require(:van).permit(:title, :capacity, :description, :color, :location, :price_per_day, :brand, :mileage, photos:[])
   end
 end

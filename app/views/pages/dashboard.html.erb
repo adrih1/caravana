@@ -1,3 +1,4 @@
+
 <div class="app-container">
   <div class="app-content">
     <div class="app-sidebar">
@@ -60,4 +61,158 @@
       </div>
     </div>
   </div>
+=======
+
+<div style="display:block;">
+
+<div class="app-container" style="padding-top: 100px; padding-bottom: 30px">
+
+  <div class="app-content">
+    <div class="app-sidebar">
+      <%= link_to my_vans_path do %>
+        <div class="app-sidebar-link">
+          <i class="fa-solid fa-van-shuttle"></i>
+        </div>
+      <%end%>
+
+      <%= link_to dashboard_path do %>
+        <div class="app-sidebar-link">
+          <i class="fa-solid fa-calendar"></i>
+        </div>
+      <%end%>
+    </div>
+
+        <div class="vans-container" style = "overflow-x: scroll;">
+          <div class="vans-container-header">
+            <div class="vans-container-header-left" style = "display:sticky; left:10px;">
+            <% @count = 0 %>
+            <% @bookings.each do |booking| %>
+            <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
+            @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
+            @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
+              %>
+            <%if @r > 0 %>
+            <% @count += 1 %>
+            <%end%>
+            <%end%>
+              <p class="rentals-to-come">Upcoming Rentals <em>  (<%=@count%>)</em></p>
+            </div>
+            <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
+          </div>
+
+           <% if @count = 0 %>
+              <div class="vans-container-empty">
+                <p>You have no upcoming rentals</p>
+                <div class="btn-classic">
+                   <%= link_to "Go book an adventure!",  root_path %>
+                </div>
+              </div>
+          <%end%>
+
+          <%# CARD DASHBOARD %>
+          <div class = "dashboard-cards" >
+            <% @bookings.each do |booking| %>
+            <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
+            @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
+            @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
+              %>
+            <%if @r > 0 %>
+              <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 mt-3 d-flex flex-column justify-content-between">
+                <div class="m-2">
+                  <div class= "d-flex justify-content-center p-2">
+                    <h2 style="color: #003459;"><%= booking.van.title %></h2>
+                  </div>
+                  <div class="my-2 d-flex justify-content-center ">
+                    <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
+                  </div>
+                  <div class="d-flex flex-row justify-content-around">
+                    <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
+                    <p class= "days">
+                      <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
+                          @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
+                          @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
+                            %>
+                      <%if @r < 0 %>
+                        <%= "#{@r * (-1)} days ago" %>
+                      <%else%>
+                        <%= "In #{@r} days" %>
+                      <%end%>
+                    </p>
+                  </div>
+                </div>
+                  <div class="card-trip-img-dashboard">
+                    <%= cl_image_tag booking.van.photos.first.key, height: 300, width: 400, crop: :fill %>
+                  </div>
+              </div>
+              <%end%>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    </div>
 </div>
+
+
+<div class="app-container" style = "margin-left:70px;padding-right:70px;margin-bottom:50px">
+  <div class="app-content">
+        <div class="vans-container" style = "overflow-x: scroll;">
+        <div class="vans-container-header">
+          <div class="vans-container-header-left">
+            <% @count = 0 %>
+            <% @bookings.each do |booking| %>
+            <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
+            @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
+            @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
+              %>
+            <%if @r < 0 %>
+            <% @count += 1 %>
+            <%end%>
+            <%end%>
+              <p class="rentals-number">Previous Rentals <em>  (<%=@count%>)</em></p>
+            </div>
+          </div>
+
+          <% if @count = 0 %>
+              <div class="vans-container-empty">
+                <p>You have never booked a van</p>
+                <div class="btn-classic">
+                  <%= link_to "Go book an adventure!",  root_path %>
+                </div>
+              </div>
+          <%end%>
+
+          <%# CARD DASHBOARD %>
+          <div class = "dashboard-cards">
+            <% @bookings.each do |booking| %>
+            <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
+            @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
+            @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
+              %>
+            <%if @r < 0 %>
+              <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 mt-3 d-flex flex-column justify-content-between">
+                <div class="m-2">
+                  <div class= "d-flex justify-content-center p-2">
+                    <h2 style="color: #003459;"><%= booking.van.title %></h2>
+                  </div>
+                  <div class="my-2 d-flex justify-content-center ">
+                    <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
+                  </div>
+                  <div class="d-flex flex-row justify-content-around">
+                    <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
+                      <% unless booking.review %>
+                        <p class= "days">
+                          <%= link_to "add a review", new_booking_review_path(booking.id), style: 'text-decoration: none; color:#white' %>
+                        </p>
+                      <% end %>
+                    <%end%>
+                  </div>
+                </div>
+                  <div class="card-trip-img-dashboard">
+                    <%= cl_image_tag booking.van.photos.first.key, height: 300, width: 400, crop: :fill %>
+                  </div>
+              </div>
+            <% end %>
+        </div>
+      </div>
+</div>
+

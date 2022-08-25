@@ -1,32 +1,43 @@
-<div class="app-container">
-  <div class="app-content">
-    <div class="app-sidebar">
-      <div class="app-sidebar-link">
-      <%= link_to dashboard_path do %>
-      <div href="" class="app-sidebar-link active">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" /></svg>
-      </div>
-      <% end %>
+<div class="my_vans-container" style="padding-top: 70px">
 
-        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-pie-chart" viewBox="0 0 24 24">
-          <defs />
-          <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
-        </svg>
+  <div class="my_vans-sidebar-container">
+    <div class="my_vans-sidebar">
+      <%= link_to my_vans_path do %>
+        <div class="app-sidebar-link">
+          <i class="fa-solid fa-van-shuttle"></i>
+        </div>
+      <%end%>
+      <%= link_to dashboard_path do %>
+        <div class="app-sidebar-link">
+          <i class="fa-solid fa-calendar"></i>
+        </div>
+      <%end%>
+    </div>
+  </div>
+
+  <div class="my_vans-all-content">
+    <div class="my_vans-content">
+      <h1>Your Rentals</h1>
+      <div class="my_vans-currently-container">
+        <h2>Currently Booked</h2>
+        <div class="my_vans-currently-cards">
+          <p>Some random card</p>
+          <p>Some random card</p>
+        </div>
+      </div>
+      <div class="my_vans-previous-container">
+        <h2>Previously Booked</h2>
+        <div class="my_vans-previous-cards">
+          <p>Some random card</p>
+          <p>Some random card</p>
+        </div>
       </div>
     </div>
 
-    <div class="vans-container">
-      <div class="vans-container-header">
-        <div class="vans-container-header-left">
-          <p class="rentals-to-come">Vos vans</p>
-          <p class="rentals-number"><em>  (<%=@vans.count%>)</em></p>
-        </div>
-        <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
-      </div>
 
-
+    <div class="my_vans-content">
+      <h1>Your Vans</h1>
+      <div class="my_vans-previous-cards">
 
       <%# CARD DASHBOARD %>
 
@@ -58,4 +69,6 @@
       </div>
     </div>
   </div>
+
+
 </div>
