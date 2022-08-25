@@ -112,14 +112,14 @@
                   action: 'change->dynamic-booking-price#updatePrice'
                   }} %>
                 <%= f.input :end_date, as: :string,input_html: { data: { flatpickr_target: 'endDateInput',dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice'}} %>
+                <p id="total-price">
+                  <strong>Total price:</strong> <span data-dynamic-booking-price-target="priceHolder"><%= @van.price_per_day %></span> €
+                </p>
                 <%= f.submit 'Book now!', class: 'btn btn-primary' %>
               <% end %>
-              <p>
-                Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @van.price_per_day %></span> €
-              </p>
+
             </div>
           </div>
-          <div class="mt-3"><span>A CALCULE</span></div>
         </div>
       </div>
     </div>
@@ -150,4 +150,3 @@
     <h4>Map</h4>
     <p><i class="fa-solid fa-location-dot"></i> <%= @van.location%></p>
   </div>
-
