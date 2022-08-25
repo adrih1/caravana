@@ -3,6 +3,12 @@ class VansController < ApplicationController
 
   def index
     @vans = policy_scope(Van)
+    @markers = @vans.geocoded.map do |van|
+      {
+        lat: van.latitude,
+        lng: van.longitude
+      }
+    end
   end
 
   # GET /van/1
