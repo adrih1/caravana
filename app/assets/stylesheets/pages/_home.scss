@@ -199,3 +199,17 @@
 
 
 }
+
+.banner .flex-form input[type="submit"] {
+  background: #00477A;
+  border: 1px solid #00477A;
+  color: #fff;
+  padding: 0 30px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover{
+    background: #005FA3;
+    border: 1px solid #005FA3;
+  }
+}
