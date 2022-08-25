@@ -23,8 +23,9 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking = current_user.bookings.find(params[:id])
     @booking.destroy
-    redirect_to root_path, status: :see_other, notice: "Booking was succesfully deleted, hope to see you soon"
+    redirect_to dashboard_path, status: :see_other, notice: "🚨 Booking was succesfully deleted 🚨"
   end
 end
 
