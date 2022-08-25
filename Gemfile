@@ -6,6 +6,9 @@ ruby "3.1.2"
 #Cloudinary gem
 gem "cloudinary"
 
+#map
+gem "geocoder"
+
 # Secret gem
 gem "dotenv-rails", groups: [:development, :test]
 
