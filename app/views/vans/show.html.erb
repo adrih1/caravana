@@ -1,8 +1,7 @@
 
-<div class="container p-4" style="width:80%;">
+<div class="container header-show-container" style="width:80%;">
   <h3><%=@van.title%></h3>
-  <p><%=@van.location%></p>
-
+  <p><i class="fa-solid fa-location-dot"></i> <%=@van.location%></p>
 </div>
 <a href="" data-bs-toggle="modal" data-bs-target="#modalphoto">
 <div class="container van-show"  style="width:80%;">
@@ -68,7 +67,6 @@
     <div style="margin-top:20px;width:65%">
         <div class="border-bottom">
           <h3><%=@van.title%></h3>
-
           <h5><%=@van.brand%></h5>
           <p><%=@van.location%></p>
           <p><i class="fa-solid fa-user-group"> </i> <%= @van.capacity%> peoples</p>
@@ -80,11 +78,11 @@
         <div class="d-flex justify-content-between
         ">
           <div  class="pe-5" style="margin-top:20px">
-            <h4>Characteristics:</h4>
-            <p><i class="fa-solid fa-road"></i>  <%= @van.mileage %> mileage</p>
+            <h4>Van Characteristics:</h4>
+            <p><i class="fa-solid fa-road"></i>  <%= @van.mileage.to_s.gsub(/\d(?=(...)+$)/, '\0 ') %> mileage</p>
             <p><i class="fa-solid fa-brush"></i>  <%= @van.color %></p>
             <p><i class="fa-solid fa-gas-pump"></i>  Gaz</p>
-            <p><i class="fa-solid fa-gear"></i>  Automatic gearbox</p>
+            <p><i class="fa-solid fa-gear"></i>  Automatic Gearbox</p>
             <p><i class="fa-solid fa-arrows-left-right-to-line"></i>  5 meters long</p>
             <p style="margin-bottom:25px"><i class="fa-solid fa-truck-droplet"></i>  13 liter per KM</p>
           </div>
