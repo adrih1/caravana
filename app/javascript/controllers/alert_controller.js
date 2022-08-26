@@ -11,9 +11,9 @@ export default class extends Controller {
   send(event){
     Swal.fire({
       icon: 'success',
-      title: 'Your van has been saved',
+      title: 'Your van has been saved, wait a minute, we are uploading your van',
       showConfirmButton: false,
-      timer: 1500
+      timer: 40000
     })
   }
 
