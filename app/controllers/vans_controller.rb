@@ -40,7 +40,7 @@ class VansController < ApplicationController
     @van.save
     if @van.save
       sleep 2
-      redirect_to van_path(@van), flash: { notice: "Successfully created" }
+      redirect_to van_path(@van)
     else
       render :new, status: :unprocessable_entity
     end
