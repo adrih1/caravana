@@ -72,39 +72,53 @@
 <div class="cards">
 </div>
 
-
   <div class="d-flex justify-content-between">
     <div style="margin-top:20px;width:65%">
-        <div class="border-bottom">
-          <h5><%=@van.brand%> • <%=@van.user.first_name %>'s Van</h5>
-          <p style="font-size:15px;"><i class="fa-solid fa-user-group"> </i> <%= @van.capacity%>  person</p>
+      <div class="border-bottom">
+        <h5><%=@van.brand%> • <%=@van.user.first_name %>'s Van</h5>
+        <p style="font-size:15px;"><i class="fa-solid fa-user-group"> </i> <%= @van.capacity%>  person</p>
+      </div>
+      <div class="border-bottom" style="margin-top:20px">
+        <h4>Description:</h4>
+        <p style="margin-bottom:10px"><%=@van.description%></p>
+      </div>
+      <div class="row">
+        <div  class="pe-5 col-6" style="margin-top:20px">
+          <h4>Caracteristics:</h4>
+          <p><i class="fa-solid fa-road"></i>  <%= @van.mileage.to_s.gsub(/\d(?=(...)+$)/, '\0 ') %> mileage</p>
+          <p><i class="fa-solid fa-brush"></i>  <%= @van.color %></p>
+          <p><i class="fa-solid fa-gas-pump"></i>  Gaz</p>
+          <p><i class="fa-solid fa-gear"></i>  Automatic Gearbox</p>
+          <p><i class="fa-solid fa-arrows-left-right-to-line"></i>  5 meters long</p>
+          <p style="margin-bottom:25px"><i class="fa-solid fa-truck-droplet"></i>  13 liter per KM</p>
         </div>
-        <div class="border-bottom" style="margin-top:20px">
-          <h4>Description:</h4>
-          <p style="margin-bottom:10px"><%=@van.description%></p>
+        <div class="border-start border-1 ps-5 col-6" style="margin-top:20px">
+          <h4>Equipments:</h4>
+          <p><i class="fa-solid fa-person-snowboarding"></i> Surfboard</p>
+          <p><i class="fa-solid fa-location-arrow"></i> GPS</p>
+          <p><i class="fa-solid fa-toilet"></i> Dry toilet</p>
+          <p><i class="fa-solid fa-mattress-pillow"></i></i> Hamac</p>
+          <p><i class="fa-solid fa-kitchen-set"></i></i> Kitchen</p>
+          <p><i class="fa-solid fa-shower"></i></i> Shower</p>
         </div>
-        <div class="d-flex justify-content-between
-        ">
-          <div  class="pe-5" style="margin-top:20px">
-            <h4>Caracteristics:</h4>
-            <p><i class="fa-solid fa-road"></i>  <%= @van.mileage.to_s.gsub(/\d(?=(...)+$)/, '\0 ') %> mileage</p>
-            <p><i class="fa-solid fa-brush"></i>  <%= @van.color %></p>
-            <p><i class="fa-solid fa-gas-pump"></i>  Gaz</p>
-            <p><i class="fa-solid fa-gear"></i>  Automatic Gearbox</p>
-            <p><i class="fa-solid fa-arrows-left-right-to-line"></i>  5 meters long</p>
-            <p style="margin-bottom:25px"><i class="fa-solid fa-truck-droplet"></i>  13 liter per KM</p>
-          </div>
-          <div class="border-start border-1 ps-5" style="margin-top:20px">
-              <h4>Equipments:</h4>
-              <p><i class="fa-solid fa-person-snowboarding"></i> Surfboard</p>
-              <p><i class="fa-solid fa-location-arrow"></i> GPS</p>
-              <p><i class="fa-solid fa-toilet"></i> Dry toilet</p>
-              <p><i class="fa-solid fa-mattress-pillow"></i></i> Hamac</p>
-              <p><i class="fa-solid fa-kitchen-set"></i></i> Kitchen</p>
-              <p><i class="fa-solid fa-shower"></i></i> Shower</p>
-           </div>
-          </div>
+        <div class="reviews border-bottom border-top">
+          <h3 style="margin-top:20px"><span class="mov" style="font-size:22px;"> <i class="fa-solid fa-star" style="font-size:15px"></i> <%= @van.bookings.count - 1 %> Comments </span></h3>
+          <% @van.bookings.each do |booking| %>
+            <%if booking.review%>
+            <div class="review pe-5" style="margin-bottom:15px;margin-left:25px">
+              <div class="d-flex">
+                <%= "⭐️" * booking.review.rating %>
+              </div>
+                <%= booking.review.content %>
+            </div>
+            <%else%>
+            <%end%>
+          <%end %>
         </div>
+      </div>
+    </div>
+
+
     <div style="width:28%">
       <div class="card card-trip" style="background-color:white;margin-top:15px;position:sticky;top:90px">
         <div class="card-body">
@@ -113,7 +127,7 @@
 
             <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @van.price_per_day %>">
               <%= simple_form_for [@van, @booking],
-                html: { data: { controller: 'flatpickr', class: 'datepicker'} } do |f| %>
+                html: { data: { controller: 'flatpickr', class: 'datepicker', action: "submit->flatpickr#send"} } do |f| %>
                 <%= f.input :start_date, as: :string, input_html: { data: {
                   flatpickr_target: 'startDateInput',
                   dynamic_booking_price_target: 'startDateInput',
@@ -134,6 +148,7 @@
 </div>
 
 
+
 <div class="container" style="margin-top:20px">
   <h3><span class="mov" style="font-size:22px;"> <i class="fa-solid fa-star" style="font-size:15px"></i> <%= @van.bookings.count - 1 %> Comments </span></h3>
   <div class="reviews row">
@@ -149,6 +164,7 @@
   <%end %>
   </div>
 </div>
+
 
  <div class="container van-show border-top d-flex justify-content-center flex-column"  style="margin-top:20px; margin-bottom:40px">
   <div style="margin-top:20px ">

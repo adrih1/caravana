@@ -28,6 +28,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def error
+  end
+
   def dashboard
    # @bookings = Booking.find_by user_id: current_user.id
     @bookings = current_user.bookings
