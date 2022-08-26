@@ -4,6 +4,7 @@
   background-position: center;
   padding: 150px 0;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .banner h1 {
@@ -53,9 +54,10 @@
   z-index: 10;
   background-size: cover;
   background-position: center;
+  position: relative;
   padding: 150px 0;
   margin-bottom: 10px;
-  background-image: linear-gradient(to bottom right, #0c2f9dd9 45%, #ffb223);
+  background-image: linear-gradient(to right, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
 }
 
 .banner-dashboard h1 {
@@ -75,6 +77,7 @@
 
 .banner-position-d {
   position: absolute;
-  top: 20px;
+  top: 115px;
+  left: 55px;
 
 }

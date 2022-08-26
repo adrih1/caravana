@@ -1,16 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 require "open-uri"
 
 puts "Cleaning DB"
 Van.destroy_all
 User.destroy_all
+Review.destroy_all
+Booking.destroy_all
 puts "DB cleaned"
 
 puts 'Creating 15 fake users...'
@@ -28,6 +23,7 @@ puts 'Creating 15 fake users...'
     })
   user.save!
 end
+
 puts 'Finished!'
 
 puts 'Creating fake vans...'
@@ -36,7 +32,7 @@ van1 = Van.new({
   title: "Cozy van for 2 people",
   color: "Green",
   capacity: 2,
-  description: "Van idéal pour les roadtrips",
+  description: "Great van for roadtrips. Fully equiped. Departure city is Paris.",
   location: "11 villa Gaudelet",
   brand: "Volkswagen",
   price_per_day: rand(50..500),
@@ -54,12 +50,12 @@ van1 = Van.new({
   van1.photos.attach(io: file3, filename: "file3.jpg", content_type: "image.jpg")
   van1.save!
 
-van2 = Van.new ({
-  title: "Unique Vintage Van",
+van2 = Van.new({
+  title: "Yellow Blaster",
   color: "Yellow",
   capacity: 3,
-  description: Faker::Lorem.paragraphs(number: 3).join,
-  location: "105 Rue Monge",
+  description: "You'll be able to live a perfect vintage experience aboard my Yellow Blaster! This Volksvagen T3 is perfectly equiped for surfing and all your favorite outdoors activities",
+  location: "8 rue Dauphine 75006, Paris",
   brand: "Volkswagen",
   price_per_day: rand(50..500),
   mileage: Faker::Vehicle.mileage,
@@ -77,7 +73,7 @@ van2 = Van.new ({
   van2.save!
 
 
-  van3 = Van.new ({
+  van3 = Van.new({
     title: "Brand New Modern Van",
     color: "Green",
     capacity: 2,
@@ -98,8 +94,6 @@ van2 = Van.new ({
     file9 = URI.open("https://images.unsplash.com/photo-1627386172764-1d1b7ea90b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2880&q=80")
     van3.photos.attach(io: file9, filename: "file9.jpg", content_type: "image.jpg")
     van3.save!
-
-
 
   van4 = Van.new ({
     title: "Cozy and resistant vintage van",
@@ -147,8 +141,8 @@ van2 = Van.new ({
     title: "Modern van with outdoor equipement",
     color: "White",
     capacity: 4,
-    description: "Magnifique van, rénové en 2020. Fiable, jamais eu de soucis techniques quelconques. Hauteur de van élevé ce qui permets d'avoir de l'ombre et de manger à l'extérieur.",
-    location: "Biarritz",
+    description: "Great van. The bedroom is on the roof and will allow you the best sunsets you ever seen. It comes fully equiped!",
+    location: "5 Avenue du Lac Marion",
     brand: "Mitsubishi",
     price_per_day: rand(50..500),
     mileage: Faker::Vehicle.mileage,
@@ -188,3 +182,56 @@ van2 = Van.new ({
 end
 
 puts 'Finished!'
+
+puts 'Creating Bookings'
+
+booking1 = Booking.new({
+  van_id: 2,
+  user_id: rand(1..15),
+  start_date: Time.new(2021, 02, 9),
+  end_date: Time.new(2021, 02, 20),
+})
+
+booking1.save!
+
+booking2 = Booking.new({
+  van_id: 2,
+  user_id: rand(1..15),
+  start_date: Time.new(2022, 06, 7),
+  end_date: Time.new(2021, 06, 20),
+})
+booking2.save!
+
+booking3 = Booking.new({
+  van_id: 6,
+  user_id: rand(1..15),
+  start_date: Time.new(2022, 06, 7),
+  end_date: Time.new(2021, 06, 20),
+})
+booking3.save!
+
+puts 'Finished'
+puts 'Creating Reviews'
+
+review1 = Review.new({
+  booking_id: 1,
+  rating: 4,
+  content: "Great van, love it! I recommend."
+})
+review1.save!
+
+review2 = Review.new({
+  booking_id: 2,
+  rating: 5,
+  content: "Amazing experience!"
+})
+review2.save!
+
+review3 = Review.new({
+  booking_id: 3,
+  rating: 5,
+  content: "Amazing experience!"
+})
+review3.save!
+
+puts "All good, t'es un chef!"
