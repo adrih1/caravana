@@ -2,8 +2,10 @@ require 'faker'
 require "open-uri"
 
 puts "Cleaning DB"
-User.destroy_all
 Van.destroy_all
+User.destroy_all
+Review.destroy_all
+Booking.destroy_all
 puts "DB cleaned"
 
 puts 'Creating 15 fake users...'
@@ -21,10 +23,10 @@ puts 'Creating 15 fake users...'
     })
   user.save!
 end
-
 puts 'Finished!'
 
 puts 'Creating fake vans...'
+
 
 van1 = Van.new({
   title: "Cozy van for 2 people",
@@ -48,7 +50,7 @@ van1 = Van.new({
   van1.photos.attach(io: file3, filename: "file3.jpg", content_type: "image.jpg")
   van1.save!
 
-van2 = Van.new({
+van2 = Van.new ({
   title: "Yellow Blaster",
   color: "Yellow",
   capacity: 3,
@@ -71,7 +73,7 @@ van2 = Van.new({
   van2.save!
 
 
-  van3 = Van.new({
+  van3 = Van.new ({
     title: "Brand New Modern Van",
     color: "Green",
     capacity: 2,
@@ -92,6 +94,8 @@ van2 = Van.new({
     file9 = URI.open("https://images.unsplash.com/photo-1627386172764-1d1b7ea90b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2880&q=80")
     van3.photos.attach(io: file9, filename: "file9.jpg", content_type: "image.jpg")
     van3.save!
+
+
 
   van4 = Van.new ({
     title: "Cozy and resistant vintage van",
@@ -181,4 +185,42 @@ end
 
 puts 'Finished!'
 
-puts "All good, t'es un chef!"
+
+booking1 = Booking.create!({
+  van_id: van2.id,
+  user_id: User.all.sample.id,
+  start_date: Time.new(2021, 02, 9),
+  end_date: Time.new(2021, 02, 20),
+})
+
+booking2 = Booking.create!({
+  van_id: van2.id,
+  user_id: User.all.sample.id,
+  start_date: Time.new(2022, 06, 07),
+  end_date: Time.new(2021, 06, 20),
+})
+
+booking3 = Booking.create!({
+  van_id: van6.id,
+  user_id: User.all.sample.id,
+  start_date: Time.new(2022, 06, 07),
+  end_date: Time.new(2021, 06, 20),
+})
+
+review1 = Review.create!({
+  booking_id: booking1.id,
+  rating: 4,
+  content: "Great van, love it! I recommend"
+})
+
+review2 = Review.create!({
+  booking_id: booking2.id,
+  rating: 5,
+  content: "Amazing experience!"
+})
+
+review3 = Review.create!({
+  booking_id: booking3.id,
+  rating: 5,
+  content: "Amazing experience!"
+})
