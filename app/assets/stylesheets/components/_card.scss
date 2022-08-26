@@ -96,13 +96,14 @@
   position: absolute;
   top: 85%;
   left: 38.5%;
-  background-color: rgba(255,255,255,0.6);
+  color: #005FA3;
+  background-color: rgba(255,255,255,1);
   font-size: 12px;
   border-radius: 20px;
   flex-shrink: 0;
   padding: 6px 16px;
   font-weight: 700;
-  color: #003459;
+
 }
 
 .capacity {
@@ -117,4 +118,8 @@
   font-weight: 700;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.trash-place{
+justify-content: space-between;
 }
