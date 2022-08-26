@@ -2,10 +2,10 @@ require 'faker'
 require "open-uri"
 
 puts "Cleaning DB"
-Van.destroy_all
-User.destroy_all
 Review.destroy_all
 Booking.destroy_all
+Van.destroy_all
+User.destroy_all
 puts "DB cleaned"
 
 puts 'Creating 15 fake users...'
