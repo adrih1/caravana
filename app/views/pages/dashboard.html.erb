@@ -36,7 +36,7 @@
             <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
           </div>
 
-           <% if @count = 0 %>
+           <% if @count == 0 %>
               <div class="vans-container-empty">
                 <p>You have no upcoming rentals</p>
                 <div>
@@ -108,7 +108,7 @@
             </div>
           </div>
 
-          <% if @count = 0 %>
+          <% if @count == 0 %>
               <div class="vans-container-empty">
                 <p>You have never booked a van</p>
                 <div>

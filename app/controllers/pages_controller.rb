@@ -19,6 +19,13 @@ class PagesController < ApplicationController
   end
 
   def home
+    if params[:query].present?
+      @vans = Van.where(location: params[:query])
+    elsif params[:category].present?
+      @vans = Van.search_btn(params[:category])
+    else
+      @vans = Van.all
+    end
   end
 
   def dashboard

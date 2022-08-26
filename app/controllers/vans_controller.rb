@@ -2,7 +2,7 @@ class VansController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def index
-    @vans = policy_scope(Van)
+
     @markers = @vans.geocoded.map do |van|
       {
         lat: van.latitude,
