@@ -93,6 +93,7 @@
 </div>
 
 
+
 <div class="app-container" style = "margin-left:70px;padding-right:70px;margin-bottom:50px">
   <div class="app-content">
         <div class="vans-container" style = "overflow-x: scroll;">
@@ -108,50 +109,45 @@
             <% @count += 1 %>
             <%end%>
             <%end%>
-              <p class="rentals-number">Previous Rentals <em>  (<%=@count%>)</em></p>
+
+              <p class="rentals-number">Previous Rentals</p>
             </div>
           </div>
 
-          <% if @count == 0 %>
-              <div class="vans-container-empty">
-                <p>You have never booked a van</p>
-                <div>
-                  <%= link_to "Rent your van!",  new_van_path(@van), style: 'text-decoration: none; color:#white', class: "btn-classic"%>
-                </div>
-              </div>
-          <%end%>
 
           <%# CARD DASHBOARD %>
-          <div class = "dashboard-cards">
+          <div class="my_vans-previous-container">
+        <h2 class="my_vans-subtitle">Passed Booking</h2>
+        <div class = "dashboard-cards" >
+          <div class="my_vans-previous-cards">
+            <div class = "dashboard-cards" >
             <% @bookings.each do |booking| %>
-            <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
-            @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}
-            @r = ((@s[0] - @a[0]) * 360) + ((@s[1] - @a[1]) * 30) + ((@s[2] - @a[2]))
-              %>
-              <%if @r < 0 %>
-                <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 mt-3 d-flex flex-column justify-content-between">
-                  <div class="m-2">
-                    <div class= "d-flex justify-content-center p-2">
-                      <h2 style="color: #003459;"><%= booking.van.title %></h2>
-                    </div>
-                    <div class="my-2 d-flex justify-content-center ">
-                      <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
-                    </div>
-                    <div class="d-flex flex-row justify-content-around">
-                      <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date.strftime('%d %b') %> - <%= booking.end_date.strftime('%d %b') %></span></p>
+              <% if Time.now() > booking.end_date %>
+                  <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 mt-3 d-flex flex-column justify-content-between">
+                    <div class="m-2">
+                      <div class= "d-flex justify-content-center p-2">
+                        <h2 style="color: #003459;"><%= booking.van.title %></h2>
+                      </div>
+                      <div class="my-2 d-flex justify-content-center ">
+                        <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
+                      </div>
+                      <div class="d-flex flex-row justify-content-around">
+                        <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date.strftime('%d %b') %> - <%= booking.end_date.strftime('%d %b') %></span></p>
                         <% unless booking.review %>
                           <p id= "days-review">
                             <%= link_to "Add a review", new_booking_review_path(booking.id), style: 'text-decoration: none; color:white'%>
                           </p>
                         <% end %>
                     </div>
-                  </div>
+                    </div>
                     <div class="card-trip-img-dashboard">
                       <%= cl_image_tag booking.van.photos.first.key, height: 300, width: 400, crop: :fill %>
                     </div>
-                <%end%>
-              </div>
-            <% end %>
+                  </div>
+              <%end%>
+            <%end%>
+                </div>
+          </div>
         </div>
       </div>
 </div>
