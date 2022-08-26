@@ -30,4 +30,13 @@ export default class extends Controller {
   #parsedBookedDates() {
     return this.datesValue
   }
+
+  send(event){
+    Swal.fire({
+      icon: 'warning',
+      title: 'OOPPPSSSS Something went wrong !',
+      showConfirmButton: false,
+      timer: 2000
+    })
+  }
 }
