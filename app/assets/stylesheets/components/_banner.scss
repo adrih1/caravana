@@ -47,3 +47,34 @@
 .derriere{
   visibility: hidden;
 }
+
+
+.banner-dashboard {
+  z-index: 10;
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  margin-bottom: 10px;
+  background-image: linear-gradient(to bottom right, #0c2f9dd9 45%, #ffb223);
+}
+
+.banner-dashboard h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner-dashboard p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner-position-d {
+  position: absolute;
+  top: 20px;
+
+}
