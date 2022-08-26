@@ -210,28 +210,4 @@ booking3 = Booking.new({
 })
 booking3.save!
 
-puts 'Finished'
-puts 'Creating Reviews'
-
-review1 = Review.new({
-  booking_id: 1,
-  rating: 4,
-  content: "Great van, love it! I recommend."
-})
-review1.save!
-
-review2 = Review.new({
-  booking_id: 2,
-  rating: 5,
-  content: "Amazing experience!"
-})
-review2.save!
-
-review3 = Review.new({
-  booking_id: 3,
-  rating: 5,
-  content: "Amazing experience!"
-})
-review3.save!
-
 puts "All good, t'es un chef!"
