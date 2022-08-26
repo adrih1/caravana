@@ -1,7 +1,14 @@
 
-<div class="container header-show-container" style="width:80%;">
-  <h3><%=@van.title%></h3>
-  <p><i class="fa-solid fa-location-dot"></i> <%=@van.location%></p>
+
+<div class="d-flex flex-row">
+  <div>
+    <%= link_to " ", root_path,  class:"fa-solid fa-arrow-left-long ms-5", style:"font-size:25px; margin-top: 89px; color:#005FA3; text-decoration: none;"%>
+  </div>
+  <div class="container header-show-container" style="width:80%; margin-top: 85px;margin-left:64px;">
+    <h3 ><%=@van.title%></h3>
+    <p style="font-size:15px;"><i class="fa-solid fa-location-dot" ></i>  <%=  @van.location%> • <%= @van.bookings.count%> comments</p>
+  </div>
+
 </div>
 <a href="" data-bs-toggle="modal" data-bs-target="#modalphoto">
 <div class="container van-show"  style="width:80%;">
@@ -24,19 +31,19 @@
 <div class="van-show">
 <div class="modal fade" id="modalphoto" tabindex="-1" aria-labelledby="modalphotoLabel" aria-hidden="true">
   <div class="modal-dialog" >
-    <div class="modal-content" style="background-color:white">
+    <div class="modal-content-show" style="background-color:white">
       <div class="modal-header" style="background-color:white">
         <h5 class="modal-title" id="modalphotoLabel">Photos</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="background-color:white">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators-<%@van.photos%> "class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
           <% @van.photos.each do |photo| %>
             <% if @count == 0 %>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=@count%>" class="active" aria-current="true" aria-label="Slide <%=@count + 1%>"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators-<%@van.photos%>" data-bs-slide-to="<%=@count%>" class="active" aria-current="true" aria-label="Slide <%=@count + 1%>"></button>
             <% else %>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=@count%>" aria-label=Slide <%=@count + 1%>"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators-<%@van.photos%>" data-bs-slide-to="<%=@count%>" aria-label=Slide <%=@count + 1%>"></button>
             <% end %>
           <% @count += 1 %>
           <% end %>
@@ -69,8 +76,8 @@
   <div class="d-flex justify-content-between">
     <div style="margin-top:20px;width:65%">
         <div class="border-bottom">
-          <h5><%=@van.brand%></h5>
-          <p><i class="fa-solid fa-user-group"> </i> <%= @van.capacity%> person</p>
+          <h5><%=@van.brand%> • <%=@van.user.first_name %>'s Van</h5>
+          <p style="font-size:15px;"><i class="fa-solid fa-user-group"> </i> <%= @van.capacity%>  person</p>
         </div>
         <div class="border-bottom" style="margin-top:20px">
           <h4>Description:</h4>
@@ -103,6 +110,7 @@
         <div class="card-body">
           <h6 class="card-title" style="text-align:"><%=@van.price_per_day%>€ / nuit</h6>
           <div data-controller="flatpickr" data-flatpickr-dates-value="<%= @van.flatpickr_booked_dates_object %>">
+
             <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @van.price_per_day %>">
               <%= simple_form_for [@van, @booking],
                 html: { data: { controller: 'flatpickr', class: 'datepicker'} } do |f| %>
@@ -117,7 +125,6 @@
                 </p>
                 <%= f.submit 'Book now!', class: 'btn btn-primary' %>
               <% end %>
-
             </div>
           </div>
         </div>
@@ -128,7 +135,7 @@
 
 
 <div class="container" style="width:80%;margin-top:20px">
-  <h3><span class="mov"> Comments (<%= @van.bookings.count - 1 %>)</span></h3>
+  <h3><span class="mov" style="font-size:22px;"> <i class="fa-solid fa-star" style="font-size:15px"></i> <%= @van.bookings.count - 1 %> Comments </span></h3>
   <div class="reviews row">
   <% @van.bookings.each do |booking| %>
     <%if booking.review%>
@@ -147,6 +154,6 @@
 
 <div class="container van-show border-top d-flex justify-content-center flex-column"  style="width:80%;margin-top:20px; margin-bottom:40px">
   <div style="margin-top:20px ">
-    <h4>Map</h4>
+    <h4>Van's location</h4>
     <p><i class="fa-solid fa-location-dot"></i> <%= @van.location%></p>
   </div>
