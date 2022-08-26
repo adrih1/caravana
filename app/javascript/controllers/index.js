@@ -24,3 +24,6 @@ application.register("navbar", NavbarController)
 
 import AlertController from "./alert_controller"
 application.register("alert", AlertController)
+
+import StarController from "./star_controller"
+application.register("star", StarController)

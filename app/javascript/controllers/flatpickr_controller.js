@@ -31,10 +31,10 @@ export default class extends Controller {
 
   send(event){
     Swal.fire({
-      icon: 'warning',
-      title: 'OOPPPSSSS Something went wrong !',
+      icon: 'success',
+      title: 'Booking completed',
       showConfirmButton: false,
-      timer: 2000
+      timer: 1500
     })
   }
 }

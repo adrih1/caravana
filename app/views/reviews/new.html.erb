@@ -11,8 +11,8 @@
             <h5>Tell us about your experience with <%=@booking.van.user.first_name%>'s van!</h5>
               <%= simple_form_for [@booking, @review] do |f| %>
                 <%= f.input :content, placeholder: 'Describe your experience, how was your van?', label: "Comment" %>
-                <%= f.input :rating, collection: (1..5).to_a, label: "Rating", input_html: {data: {controller: "star-rating"}}, prompt: "Rate your experience" %>
-                <%= f.submit "Submit review", class: "btn btn-classic-new", data: { controller: 'alert', action: 'click->alert#hop'} %>
+                 <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
+                 <%= f.submit "Submit review", class: "btn btn-classic-new", data: { controller: 'alert', action: 'click->alert#hop'} %>
               <% end %>
         </div>
 
