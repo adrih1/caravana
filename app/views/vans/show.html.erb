@@ -109,7 +109,7 @@
           <%= "⭐️" * booking.review.rating %>
           <div class="d-flex align-items-center" style="margin-bottom:15px">
             <p style="margin-bottom: 1px;margin-left: 0px;"><em>"<%= booking.review.content %>"</em></p>
-            <p class="d-flex align-items-center justify-content-between" style="margin-bottom: 1px;">- <%= booking.user.first_name  %> </p> <span style="font-size:10px;color:#005FA3;"> <%= booking.start_date.strftime("%B %Y")  %></span>
+            <p class="d-flex align-items-center justify-content-between" style="margin-bottom: 1px;"> - <%= booking.user.first_name  %> </p> <span style="font-size:10px;color:#005FA3;"> - <%= booking.start_date.strftime("%B %Y")  %></span>
           </div>
           <%else%>
           <%end%>
