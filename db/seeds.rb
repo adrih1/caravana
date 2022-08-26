@@ -183,31 +183,4 @@ end
 
 puts 'Finished!'
 
-puts 'Creating Bookings'
-
-booking1 = Booking.new({
-  van_id: 2,
-  user_id: rand(1..15),
-  start_date: Time.new(2021, 02, 9),
-  end_date: Time.new(2021, 02, 20),
-})
-
-booking1.save!
-
-booking2 = Booking.new({
-  van_id: 2,
-  user_id: rand(1..15),
-  start_date: Time.new(2022, 06, 7),
-  end_date: Time.new(2021, 06, 20),
-})
-booking2.save!
-
-booking3 = Booking.new({
-  van_id: 6,
-  user_id: rand(1..15),
-  start_date: Time.new(2022, 06, 7),
-  end_date: Time.new(2021, 06, 20),
-})
-booking3.save!
-
 puts "All good, t'es un chef!"
