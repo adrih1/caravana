@@ -17,7 +17,7 @@ class VansController < ApplicationController
     @booking = Booking.new
     authorize @van
     if @van.geocode
-      @marker = [lat: @van.geocode[0], lng: @van.geocode[1], image_url: helpers.asset_url("/assets/images/logo")]
+      @marker = [lat: @van.geocode[0], lng: @van.geocode[1], image_url: helpers.asset_path("logo.png")]
     end
   end
   #/Users/imaginarium/code/Kenbak/caravana/app/assets/images/logo.png
