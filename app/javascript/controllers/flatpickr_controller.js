@@ -7,16 +7,12 @@ export default class extends Controller {
   static values = { dates: Object }
 
   connect() {
-    // this.initFlatPickr()
-    flatpickr(this.startDateInputTarget, {
-      mode: 'range',
-      "plugins": [new rangePlugin({ input: this.endDateInputTarget})],
-
-    })
+    this.#initFlatPickr()
   }
 
   #initFlatPickr() {
-    flatpickr(".datepicker", this.#options());
+    console.log(document.querySelector(".datepicker"))
+    flatpickr(this.startDateInputTarget, this.#options());
   }
 
   #options() {
@@ -24,6 +20,8 @@ export default class extends Controller {
       ...this.#parsedBookedDates(),
       enableTime: true,
       minDate: new Date(),
+      mode: 'range',
+      "plugins": [new rangePlugin({ input: this.endDateInputTarget})]
     }
   }
 

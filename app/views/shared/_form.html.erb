@@ -27,7 +27,9 @@
     </div>
 </div>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit "Rent your Van", class: "btn btn-classic-new" %>
+    <%# <div data-controller="alert" data-action="click->alert#send" > %>
+      <%= f.submit "Rent your Van", class: "btn btn-classic-new", data: { controller: 'alert', action: 'click->alert#send'}%>
+    <%# </div> %>
   <% end %>
 
 </div>

@@ -157,37 +157,3 @@
     </div>
   </div>
 </div>
-
-
-<ul class="filter-tabs">
-        <li>
-          <button class="filter-button filter-active" data-translate-value="0">
-            New
-          </button>
-        </li>
-        <li>
-          <button class="filter-button" data-translate-value="100%">
-            Popular
-          </button>
-        </li>
-        <li>
-          <button class="filter-button" data-translate-value="200%">
-            Following
-          </button>
-        </li>
-      </ul>
-
-<div class="selectors">
-  <%= form_with url: vans_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          value: "test"
-        %>
-        <%= submit_tag "Search", type: "submit" %>
-      <% end %>
-</div>
-<div id="radio_buttons">
-    <%= radio_button_tag 'radioGroup', "1" %> 1 &nbsp;&nbsp;&nbsp;
-    <%= radio_button_tag 'radioGroup', "2" %> 2 &nbsp;&nbsp;&nbsp;
-    <%= radio_button_tag 'radioGroup', "4" %> 4 &nbsp;&nbsp;&nbsp;
-</div>
