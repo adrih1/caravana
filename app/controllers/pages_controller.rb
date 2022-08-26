@@ -20,9 +20,7 @@ class PagesController < ApplicationController
 
   def home
     if params[:query].present?
-      @vans = Van.where(location: params[:query])
-    elsif params[:category].present?
-      @vans = Van.search_btn(params[:category])
+      @vans = Van.where("location ILIKE ?", "%#{params[:query]}%")
     else
       @vans = Van.all
     end

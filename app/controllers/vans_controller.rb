@@ -39,11 +39,12 @@ class VansController < ApplicationController
     @van.user = current_user
     @van.save
     if @van.save
+      sleep 2
       redirect_to van_path(@van), flash: { notice: "Successfully created" }
     else
       render :new, status: :unprocessable_entity
     end
-    authorize @van
+      authorize @van
   end
 
   def update
