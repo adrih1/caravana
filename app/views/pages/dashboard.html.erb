@@ -6,13 +6,13 @@
   <div class="app-content">
     <div class="app-sidebar">
       <%= link_to my_vans_path do %>
-        <div class="app-sidebar-link">
+        <div class="app-sidebar-link-active">
           <i class="fa-solid fa-van-shuttle"></i>
         </div>
       <%end%>
 
       <%= link_to dashboard_path do %>
-        <div class="app-sidebar-link-active">
+        <div class="app-sidebar-link">
           <i class="fa-solid fa-calendar"></i>
         </div>
       <%end%>
@@ -60,15 +60,15 @@
             <%if @r > 0 %>
               <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 mt-3 d-flex flex-column justify-content-between">
                 <div class="m-2">
-                  <div class= "d-flex justify-content-center p-2">
+                  <div class= "d-flex justify-content-center p-2 text-center">
                     <h2 style="color: #003459;"><%= booking.van.title %></h2>
                   </div>
-                  <div class="my-2 d-flex justify-content-around-spacebt">
+                  <div class="my-2 d-flex justify-content-around">
                     <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
                   </div>
-                  <div class="d-flex trash-place flex-row justify-content-around-spacebt">
-                    <p><span ; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
-                    <%= link_to "", booking_path(booking), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"fa-solid poubelle fa-trash-can" %>
+                  <div class="d-flex trash-place flex-row justify-content-around mb-1">
+                    <p><span style ="font-size: 14px; font-weight: 400"><%= booking.start_date.strftime('%d %b') %> - <%= booking.end_date.strftime('%d %b') %></span></p>
+                    <%= link_to "", booking_path(booking), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"poubelle fa-solid fa-xmark" %>
                     <p class= "days">
                       <% @s = booking.start_date.to_s.split("-").map{|el| el.to_i}
                           @a = Time.now().to_s.split(" ")[0].split("-").map{ |el| el.to_i}

@@ -3,12 +3,12 @@
   <div class="my_vans-sidebar-container">
     <div class="my_vans-sidebar">
       <%= link_to my_vans_path do %>
-        <div class="app-sidebar-link-active">
+        <div class="app-sidebar-link">
           <i class="fa-solid fa-van-shuttle"></i>
         </div>
       <%end%>
       <%= link_to dashboard_path do %>
-        <div class="app-sidebar-link">
+        <div class="app-sidebar-link-active">
           <i class="fa-solid fa-calendar"></i>
         </div>
       <%end%>
@@ -42,7 +42,7 @@
                         <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
                       </div>
                       <div class="d-flex flex-row justify-content-around">
-                        <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
+                        <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date.strftime('%d %b') %> - <%= booking.end_date.strftime('%d %b') %></span></p>
                         <p id= "active-renting">Renting</p>
                       </div>
                     </div>
@@ -74,7 +74,7 @@
                         <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
                       </div>
                       <div class="d-flex flex-row justify-content-around">
-                        <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
+                        <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date.strftime('%d %b') %> - <%= booking.end_date.strftime('%d %b') %></span></p>
                         <p id= "passed-booking">Passed Booking</p>
                       </div>
                     </div>
@@ -112,9 +112,9 @@
                   <div class= "d-flex justify-content-center">
                     <h2 style="color: #003459;"><%= van.title %></h2>
                   </div>
-                  <div class="my-2 d-flex justify-content-center align-items-center ">
+                  <div class="my-2 d-flex justify-content-center align-items-center text-center ">
                     <p class="card-text-dashboard" style="color: #003459;"> <%= van.brand %> -  <%= van.location %></p>
-                    <%= link_to "", van_path(van), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"fa-solid fa-trash-can" %>
+                    <%= link_to "", van_path(van), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"poubelle fa-solid fa-trash-can" %>
                   </div>
                 </div>
                <%= cl_image_tag van.photos.first.key, height: 300, width: 400, crop: :fill %>
