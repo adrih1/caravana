@@ -35,6 +35,7 @@ class PagesController < ApplicationController
   end
 
   def my_vans
+    @bookings = current_user.bookings
     @vans = current_user.vans
   end
 end

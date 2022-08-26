@@ -3,7 +3,7 @@
   <div class="my_vans-sidebar-container">
     <div class="my_vans-sidebar">
       <%= link_to my_vans_path do %>
-        <div class="app-sidebar-link">
+        <div class="app-sidebar-link-active">
           <i class="fa-solid fa-van-shuttle"></i>
         </div>
       <%end%>
@@ -18,21 +18,69 @@
   <div class="my_vans-all-content">
     <div class="my_vans-content">
       <div class="my_vans-header">
-      <h1 class="my_vans-title">Your Rentals</h1>
-      <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
+        <h1 class="my_vans-title">Your Rentals</h1>
+        <p class="time"><%= Time.now().to_s.split(" ")[0] %></p>
       </div>
       <div class="my_vans-currently-container">
         <h2 class="my_vans-subtitle">Currently Booked</h2>
-        <div class="my_vans-currently-cards">
-          <p>Some random card</p>
-          <p>Some random card</p>
+        <div class = "dashboard-cards" >
+          <div class="my_vans-currently-cards">
+                <div class = "dashboard-cards">
+            <% @bookings.each do |booking| %>
+              <% if Time.now() >= booking.start_date && Time.now() <= booking.end_date %>
+                  <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 mt-3 d-flex flex-column justify-content-between">
+                    <div class="m-2">
+                      <div class= "d-flex justify-content-center p-2">
+                        <h2 style="color: #003459;"><%= booking.van.title %></h2>
+                      </div>
+                      <div class="my-2 d-flex justify-content-center ">
+                        <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
+                      </div>
+                      <div class="d-flex flex-row justify-content-around">
+                        <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
+                        <p id= "active-renting">Renting</p>
+                      </div>
+                    </div>
+                    <div class="card-trip-img-dashboard">
+                      <%= cl_image_tag booking.van.photos.first.key, height: 300, width: 400, crop: :fill %>
+                    </div>
+                  </div>
+              <%end%>
+            <%end%>
+                </div>
+          </div>
         </div>
       </div>
+
+      <%# PREVIOUSLY BOOKED PREVIOUSLY BOOKED PREVIOUSLY BOOKED PREVIOUSLY BOOKED %>
       <div class="my_vans-previous-container">
-        <h2 class="my_vans-subtitle">Previously Booked</h2>
-        <div class="my_vans-previous-cards">
-          <p>Some random card</p>
-          <p>Some random card</p>
+        <h2 class="my_vans-subtitle">Passed Booking</h2>
+        <div class = "dashboard-cards" >
+          <div class="my_vans-previous-cards">
+            <div class = "dashboard-cards" >
+            <% @bookings.each do |booking| %>
+              <% if Time.now() > booking.end_date %>
+                  <div class="col-3 card-trip-dashboard border rounded-4 px-0 mb-4 mt-3 d-flex flex-column justify-content-between">
+                    <div class="m-2">
+                      <div class= "d-flex justify-content-center p-2">
+                        <h2 style="color: #003459;"><%= booking.van.title %></h2>
+                      </div>
+                      <div class="my-2 d-flex justify-content-center ">
+                        <p class="card-text-dashboard" style="color: #003459;"> <%= booking.van.brand %> -  <%= booking.van.location %></p>
+                      </div>
+                      <div class="d-flex flex-row justify-content-around">
+                        <p><span style="color: #005FA3; font-size: 14px; font-weight: 400;"><%= booking.start_date %> - <%= booking.end_date %></span></p>
+                        <p id= "passed-booking">Passed Booking</p>
+                      </div>
+                    </div>
+                    <div class="card-trip-img-dashboard">
+                      <%= cl_image_tag booking.van.photos.first.key, height: 300, width: 400, crop: :fill %>
+                    </div>
+                  </div>
+              <%end%>
+            <%end%>
+                </div>
+          </div>
         </div>
       </div>
     </div>
@@ -42,7 +90,7 @@
       <h1 class="my_vans-title">Your Vans</h1>
       <div class="my_vans-previous-cards">
 
-      <%# CARD DASHBOARD %>
+      <%# YOUR VANS %>
 
       <% if @vans.empty? %>
       <div class="my_vans d-flex justify-content-center" style="margin-bottom:20px">
@@ -64,7 +112,7 @@
                     <%= link_to "", van_path(van), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: "text-decoration: none;  ", class:"fa-solid fa-trash-can" %>
                   </div>
                 </div>
-                <img class="card-trip-img-dashboard" src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80"/>
+               <%= cl_image_tag van.photos.first.key, height: 300, width: 400, crop: :fill %>
               </div>
             <% end %>
           </div>

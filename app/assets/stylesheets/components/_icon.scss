@@ -1,9 +1,12 @@
-.fa-solid:hover {
-  color: red;
-  cursor: pointer;
-  transform: scale(1.1);
+.poubelle {
+  color: #ff0000d3
 }
 
+.poubelle:hover {
+color: red;
+cursor: pointer;
+transform: scale(1.1);
+}
 
 .fa-edit:hover{
   color:#005FA3;
