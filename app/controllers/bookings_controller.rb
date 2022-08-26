@@ -12,7 +12,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.van = @van
     if @booking.save
-      redirect_to dashboard_path(@van), notice: "Booking was successfully created."
+      sleep 2
+      redirect_to dashboard_path(@van)
     else
       render 'vans/show', status: :unprocessable_entity
     end
