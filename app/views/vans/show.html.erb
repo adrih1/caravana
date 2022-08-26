@@ -147,6 +147,25 @@
   </div>
 </div>
 
+
+
+<div class="container" style="margin-top:20px">
+  <h3><span class="mov" style="font-size:22px;"> <i class="fa-solid fa-star" style="font-size:15px"></i> <%= @van.bookings.count - 1 %> Comments </span></h3>
+  <div class="reviews row">
+  <% @van.bookings.each do |booking| %>
+    <%if booking.review%>
+    <div class="review col-6">
+      <div class="d-flex">
+        <%= "⭐️" * booking.review.rating %>
+      </div>
+    </div>
+    <%else%>
+    <%end%>
+  <%end %>
+  </div>
+</div>
+
+
  <div class="container van-show border-top d-flex justify-content-center flex-column"  style="margin-top:20px; margin-bottom:40px">
   <div style="margin-top:20px ">
     <h4>Van's location</h4>
