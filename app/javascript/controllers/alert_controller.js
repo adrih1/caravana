@@ -25,4 +25,4 @@ export default class extends Controller {
       timer: 1500
     })
   }
-}
+}  
