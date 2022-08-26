@@ -8,19 +8,19 @@
 
   <div class="row">
     <div class="col-6">
-      <%= f.input :brand, placeholder: 'Ford, Volkswagen...'  %>
+      <%= f.input :brand,  collection: ["Ford", "Volkswagen", "Chevrolet", "Toyota", "Mitsubishi", "Audi", "Peugeot", "Renault"], prompt: "Select a brand"  %>
     </div>
     <div class="col-6">
-      <%= f.input :color, placeholder: 'Red, white, blue...'  %>
+      <%= f.input :color, collection: ["Blue", "White", "Black", "Yellow", "Orange", "Red", "Green", "Brown"], prompt: "Select a color"  %>
     </div>
   </div>
 
 <div class="row">
     <div class="col-4">
-      <%= f.input :capacity,  collection: 1..10 %>
+      <%= f.input :capacity,  collection: 1..10, prompt: "Select a capacity" %>
     </div>
     <div class="col-4">
-      <%= f.input :price_per_day, placeholder: '60$ / day', wrapper_html: { class:'' }%>
+      <%= f.input :price_per_day, placeholder: '60$', wrapper_html: { class:'' }%>
     </div>
     <div class="col-4">
      <%= f.input :mileage, placeholder: '102030 km' %>

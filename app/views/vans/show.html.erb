@@ -122,7 +122,7 @@
     <div style="width:28%">
       <div class="card card-trip" style="background-color:white;margin-top:15px;position:sticky;top:90px">
         <div class="card-body">
-          <h6 class="card-title" style="text-align:"><%=@van.price_per_day%>€ / nuit</h6>
+          <h6 class="card-title" style="text-align:"><%=@van.price_per_day%>€ / night</h6>
           <div data-controller="flatpickr" data-flatpickr-dates-value="<%= @van.flatpickr_booked_dates_object %>">
 
             <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @van.price_per_day %>">
@@ -137,7 +137,7 @@
                 <p id="total-price">
                   <strong>Total price:</strong> <span data-dynamic-booking-price-target="priceHolder"><%= @van.price_per_day %></span> €
                 </p>
-                <%= f.submit 'Book now!', class: 'btn btn-primary' %>
+                <%= f.submit 'Book now!', class: 'btn btn-classic-new' %>
               <% end %>
             </div>
           </div>
