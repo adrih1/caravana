@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard"
   get "my_vans", to: "pages#my_vans"
+  get "error", to: "pages#error"
 end
