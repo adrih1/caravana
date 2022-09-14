@@ -4,7 +4,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="http://caravana-adrih1.herokuapp.com/"><img src="app/assets/images/logo.png" alt="Logo"></a>
+  <a href="http://caravana-adrih1.herokuapp.com/" target="_blank"><img src="app/assets/images/logo.png" alt="Logo"></a>
   <h1 align="center">Caravana</h1>
 
   <h3 align="center">
